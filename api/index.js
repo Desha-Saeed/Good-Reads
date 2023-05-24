@@ -6,6 +6,12 @@ const connectDB = require('./config/db_config');
 
 // Routers import
 const userRouter=require('./routes/user.routes');
+const authorRouter=require('./routes/author.routes');
+const bookRouter=require('./routes/book.routes');
+const categoryRouter=require('./routes/category.routes');
+const rateRouter=require('./routes/rate.routes');
+const reviewRouter=require('./routes/review.routes');
+const statusRouter=require('./routes/status.routes');
 
 
 //configure .env variables
@@ -26,6 +32,12 @@ app.disable('etag');
 
 // use middleware routes
 app.use(userRouter);
+app.use(authorRouter);
+app.use(bookRouter);
+app.use(categoryRouter);
+app.use(rateRouter);
+app.use(reviewRouter);
+app.use(statusRouter);
 
 
 const PORT = process.env.PORT || 8000;
