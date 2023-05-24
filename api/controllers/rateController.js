@@ -53,7 +53,7 @@ let editRate=async(req,res)=>{
       
     const data= await req.body;
      result= await  rateModel.findByIdAndUpdate({_id:data._id},
-        {rate:data.rate ,review:data.review,state:data.state });
+        {rate:data.rate  });
         res.status(200).json(result);
     } catch (error) {
          res.status(500).json(result);

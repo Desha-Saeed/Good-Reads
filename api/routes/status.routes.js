@@ -5,23 +5,23 @@ const parser=require('body-parser');
 
 
 // add status
-Router.post('/rate/add',statusController.addStatus)
+Router.post('/status/add',statusController.addStatus)
 
 
 // show status
-Router.get('/show/list',statusController.showStatus)
+Router.get('/status/list',statusController.showStatus)
 
 
 // search status 
-Router.get('/rate/search/:id',statusController.searchStatus)
+Router.get('/status/search/:id',statusController.searchStatus)
 
 
 // delete status
-Router.delete('/rate/delete/:id',statusController.deleteStatus)
+Router.delete('/status/delete/:id',statusController.deleteStatus)
 
 
 // edit status 
-Router.put('/rate/edit',statusController.editStatus)
+Router.put('/status/edit',statusController.editStatus)
 
 
 module.exports=Router;

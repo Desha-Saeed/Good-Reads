@@ -1,12 +1,12 @@
 const mongoose=require('mongoose');
 const {isEmail}=require('validator')
 const userSchema=mongoose.Schema({
-    firstName:{
+    f_name:{
         type:String , 
         required:[true,'enter email']
      },
 
-    lastName:{
+    l_name:{
         type:String  ,
         required:[true,'enter email']
         },

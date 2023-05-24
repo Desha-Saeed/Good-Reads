@@ -59,7 +59,12 @@ let deleteBook=async(req,res)=>{
 let editBook=async(req,res)=>{
     try {
         const data=await req.body;
-         result=await bookModel.findByIdAndUpdate({_id:data._id},{name:data.name });
+         result=await bookModel.findByIdAndUpdate({_id:data._id},{
+            name:data.name, 
+            photo:data.photo,
+            category_id:data.category_id,
+            author_id:data.author_id
+        });
          res.status(200).json(result);
     } 
     catch (error) {

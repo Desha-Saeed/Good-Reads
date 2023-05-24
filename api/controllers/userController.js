@@ -56,10 +56,15 @@ let deleteUser=async(req,res)=>{
 
 //edit post
 
-let editUser=async(req,post)=>{
+let editUser=async(req,res)=>{
    try {
     const data=await req.body;
-   result=await   userModel.findByIdAndUpdate({_id:data.id});
+   result=await   userModel.findByIdAndUpdate({_id:data.id},{
+      f_name:data.f_name, 
+      l_name:data.l_name,
+      email:data.email,
+      password:data.password
+   });
    res.status(200).json(result)
     
     } catch (error) {

@@ -1,12 +1,11 @@
-const authorModel=require('../models/authorModel');
+const authorModel=require('../models/authoModel');
 
 
 // add author
  let addAuthor = async (req,res)=>{
   try {
-    const author= await authorModel.create(req.body);
-    res.status(200).send(req.file);
-    console.log(req.file);
+    const result= await authorModel.create(req.body);
+    res.status(200).send(result);
   } catch (error) {
     res.status(401).json(error);
   }

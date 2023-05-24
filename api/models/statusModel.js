@@ -3,7 +3,7 @@ const mongoose=require('mongoose');
 const postSchema=mongoose.Schema({
    
 
-    status:{
+    state:{
         type:String ,
         required:[true,'please enter title']
     },

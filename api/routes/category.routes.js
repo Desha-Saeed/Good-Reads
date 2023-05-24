@@ -5,7 +5,7 @@ const catgoryController =require('../controllers/categoryController');
 
 // add category
 
-Router.category('/category/add',catgoryController.addCategory)
+Router.post('/category/add',catgoryController.addCategory)
 
 
 

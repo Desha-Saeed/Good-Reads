@@ -1,27 +1,27 @@
 const express=require('express');
 const Router=express.Router();
-const reviewController =require('../controllers/rateController');
+const reviewController =require('../controllers/reviewController');
 
 
 
 // add review
-Router.post('/rate/add',reviewController.addRate)
+Router.post('/review/add',reviewController.addReview)
 
 
 // show review
-Router.get('/show/list',reviewController.showRate)
+Router.get('/review/list',reviewController.showReview)
 
 
 // search review 
-Router.get('/rate/search/:id',reviewController.searchRate)
+Router.get('/review/search/:id',reviewController.searchReview)
 
 
 // delete review
-Router.delete('/rate/delete/:id',reviewController.deleteRate)
+Router.delete('/review/delete/:id',reviewController.deleteReview)
 
 
 // edit review 
-Router.put('/rate/edit',reviewController.editRate)
+Router.put('/review/edit',reviewController.editReview)
 
 
 module.exports=Router;
