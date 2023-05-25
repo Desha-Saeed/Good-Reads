@@ -61,7 +61,6 @@ userSchema.pre('save', async function (next) {
 });
 
 //method to compare hashed and normal password
-
 userSchema.methods.correctPassword = async function (candidate, password) {
   return await bcrypt.compare(candidate, password);
 };

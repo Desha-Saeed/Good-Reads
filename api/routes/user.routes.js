@@ -1,7 +1,14 @@
 const express = require('express');
-const { getAllUsers } = require('../controllers/userController');
+const {
+  getAllUsers,
+  deleteAllUsers,
+} = require('../controllers/userController');
+const { protect, restrictTo } = require('../middlewares/auth');
 const router = express.Router();
 
-router.get('/', getAllUsers);
+router
+  .route('/')
+  .get(getAllUsers)
+  .delete(protect, restrictTo('admin'), deleteAllUsers);
 
 module.exports = router;

@@ -3,6 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const connectDB = require('./config/db_config');
 const { body } = require('express-validator');
+const cors = require('cors');
 
 //routes
 const { login, register } = require('./controllers/authController');
@@ -13,13 +14,20 @@ const {
   notFoundErrorHandler,
   globalErrorHandler,
 } = require('./middlewares/error');
+//========================================================================================================
+
 //create app
 const app = express();
 
 const PORT = process.env.PORT || 8000;
 
+// body parser
 app.use(express.json());
 
+//Cross access origin options
+app.use(cors());
+
+//connect to database
 connectDB();
 
 // auth routes

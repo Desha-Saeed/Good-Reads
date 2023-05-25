@@ -18,6 +18,7 @@ exports.register = catchAsync(async (req, res, next) => {
     email: req.body.email.toLowerCase(),
     password: req.body.password,
     confirmPassword: req.body.confirmPassword,
+    role: req.body.role,
   });
 
   //sign the token

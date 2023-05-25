@@ -12,3 +12,13 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.deleteAllUsers = catchAsync(async (req, res, next) => {
+  await User.deleteMany({});
+
+  res.status(200).json({
+    status: 'success',
+
+    data: 'All users has been deleted',
+  });
+});
