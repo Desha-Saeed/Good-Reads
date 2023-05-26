@@ -12,14 +12,6 @@ const signToken = (id) => {
 };
 
 exports.register = catchAsync(async (req, res, next) => {
-  const errors = validationResult(req);
-  // if there is error then return Error
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      success: false,
-      errors: errors.array(),
-    });
-  }
   //create user
   const newUser = await User.create({
     firstName: req.body.firstName,

@@ -1,27 +1,24 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const postSchema=mongoose.Schema({
-   
+const statusSchema = mongoose.Schema({
+  state: {
+    type: String,
+    enum: ['read', 'wanttoread', 'reading'],
+    required: [true, 'please enter title'],
+  },
 
-    state:{
-        type:String ,
-        required:[true,'please enter title']
-    },
+  book_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'books',
+    required: true,
+  },
 
-    book_id:{
-        type:mongoose.Schema.Types.ObjectId , 
-        ref:"books",
-        required:true 
-    },
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+  },
+});
 
-     user_id:{
-        type:mongoose.Schema.Types.ObjectId ,
-        ref:"users",
-    }
-})
+const statusModel = mongoose.model('states', statusSchema);
 
-const postModel=mongoose.model('states',postSchema);
-
-
-
-module.exports=postModel;
+module.exports = statusModel;

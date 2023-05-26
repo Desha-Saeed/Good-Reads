@@ -1,11 +1,23 @@
 const express = require('express');
 const Router = express.Router();
 const catgoryController = require('../controllers/categoryController');
-const { restrictTo } = require('../middlewares/auth');
+const {
+  categoryCreateValidationRules,
+  categoryUpdateValidationRules,
+} = require('../validations/category.validation');
+
+const { restrictTo, protect } = require('../middlewares/auth');
+const { validate } = require('../middlewares/validations');
 
 // add category
 
-Router.post('/category', restrictTo('admin'), catgoryController.addCategory);
+Router.post(
+  '/category',
+  validate(categoryCreateValidationRules),
+  restrictTo('admin'),
+  protect,
+  catgoryController.addCategory
+);
 
 // show categorys
 Router.get('/category', catgoryController.showCategory);
@@ -16,11 +28,18 @@ Router.get('/category/:id', catgoryController.searchCategory);
 // delete category
 Router.delete(
   '/category/:id',
+  protect,
   restrictTo('admin'),
   catgoryController.deleteCategory
 );
 
 // edit category
-Router.put('/category', restrictTo('admin'), catgoryController.editCategory);
+Router.put(
+  '/category',
+  validate(categoryUpdateValidationRules),
+  restrictTo('admin'),
+  protect,
+  catgoryController.editCategory
+);
 
 module.exports = Router;

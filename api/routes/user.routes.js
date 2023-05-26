@@ -3,6 +3,7 @@ const Router = express.Router();
 const userRouter = require('../controllers/userController');
 const { restrictTo, protect } = require('../middlewares/auth');
 const { userUpdateValidationRules } = require('../validations/user.validation');
+const { validate } = require('../middlewares/validations');
 
 // show users
 Router.get('/user', restrictTo('admin'), userRouter.showUsers);
@@ -16,6 +17,7 @@ Router.delete('/user/:id', restrictTo('admin'), userRouter.deleteUser);
 // edit post
 Router.put(
   '/user/:id',
+  validate(userUpdateValidationRules),
   restrictTo('admin'),
   protect,
 

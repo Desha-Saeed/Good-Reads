@@ -1,27 +1,23 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const postSchema=mongoose.Schema({
+const reviewSchema = mongoose.Schema({
+  review: {
+    type: String,
+    required: [true, 'please enter title'],
+  },
 
-    review:{
-        type:String ,
-         required:[true,'please enter title']
-     },
+  book_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'books',
+    required: true,
+  },
 
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+  },
+});
 
-    book_id:{
-        type:mongoose.Schema.Types.ObjectId , 
-        ref:"books",
-        required:true 
-    },
+const reviewModel = mongoose.model('reviews', reviewSchema);
 
-     user_id:{
-        type:mongoose.Schema.Types.ObjectId ,
-        ref:"users",
-    }
-})
-
-const postModel=mongoose.model('reviews',postSchema);
-
-
-
-module.exports=postModel;
+module.exports = reviewModel;

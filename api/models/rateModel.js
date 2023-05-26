@@ -1,25 +1,23 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const postSchema=mongoose.Schema({
-    rate:{
-        type:Number,
-        required:[true,'please enter photo']
-    },
+const rateSchema = mongoose.Schema({
+  rate: {
+    type: Number,
+    required: [true, 'please enter rating'],
+  },
 
-    book_id:{
-        type:mongoose.Schema.Types.ObjectId , 
-        ref:"books",
-        required:true 
-    },
+  book_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'books',
+    required: true,
+  },
 
-     user_id:{
-        type:mongoose.Schema.Types.ObjectId ,
-        ref:"users",
-    }
-})
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+  },
+});
 
-const postModel=mongoose.model('rates',postSchema);
+const rateModel = mongoose.model('rates', rateSchema);
 
-
-
-module.exports=postModel;
+module.exports = rateModel;

@@ -1,10 +1,18 @@
 const express = require('express');
 const Router = express.Router();
 const statusController = require('../controllers/statusController');
-const parser = require('body-parser');
+const {
+  statusCreateValidationRules,
+  statusUpdateValidationRules,
+} = require('../validations/status.validation');
+const { validate } = require('../middlewares/validations');
 
 // add status
-Router.post('/status', statusController.addStatus);
+Router.post(
+  '/status',
+  validate(statusCreateValidationRules),
+  statusController.addStatus
+);
 
 // show status
 Router.get('/status', statusController.showStatus);
@@ -16,6 +24,10 @@ Router.get('/status/:id', statusController.searchStatus);
 Router.delete('/status/:id', statusController.deleteStatus);
 
 // edit status
-Router.put('/status/:id', statusController.editStatus);
+Router.put(
+  '/status/:id',
+  validate(statusUpdateValidationRules),
+  statusController.editStatus
+);
 
 module.exports = Router;
