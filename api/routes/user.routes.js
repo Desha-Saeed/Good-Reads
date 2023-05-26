@@ -1,38 +1,25 @@
-const express=require('express');
-const Router=express.Router();
-const userRouter=require('../controllers/userController');
-
-
-
-// add user
-Router.post('/user/add',userRouter.addUser)
+const express = require('express');
+const Router = express.Router();
+const userRouter = require('../controllers/userController');
+const { restrictTo, protect } = require('../middlewares/auth');
+const { userUpdateValidationRules } = require('../validations/user.validation');
 
 // show users
-Router.get('/user/list',userRouter.showUsers)
+Router.get('/user', restrictTo('admin'), userRouter.showUsers);
 
 // search users
-Router.get('/user/search/:id',userRouter.searchUser)
+Router.get('/user/:id', userRouter.searchUser);
 
 // delete post
-Router.delete('/user/delete/:id',userRouter.deleteUser);
+Router.delete('/user/:id', restrictTo('admin'), userRouter.deleteUser);
 
-// edit post 
-Router.put('/user/edit',userRouter.editUser)
+// edit post
+Router.put(
+  '/user/:id',
+  restrictTo('admin'),
+  protect,
 
+  userRouter.editUser
+);
 
-const express = require('express');
-const {
-  getAllUsers,
-  deleteAllUsers,
-} = require('../controllers/userController');
-const { protect, restrictTo } = require('../middlewares/auth');
-const router = express.Router();
-
-router
-  .route('/')
-  .get(getAllUsers)
-  .delete(protect, restrictTo('admin'), deleteAllUsers);
-
-module.exports = router;
-
-module.exports=Router;
+module.exports = Router;

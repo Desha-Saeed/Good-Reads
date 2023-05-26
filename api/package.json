@@ -11,10 +11,7 @@
   "author": "Mostafa Saeed",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "bcrypt": "^5.1.0",
-=======
->>>>>>> 2a1f772384a70912c3a32ca232446b27d5085c86
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

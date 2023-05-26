@@ -1,8 +1,10 @@
 const { catchAsync } = require('../middlewares/error');
-const User = require('../models/userModel');
+const userModel = require('../models/userModel');
+const { validationResult } = require('express-validator');
+//=======================================================================================================================//
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await User.find({});
+  const users = await userModel.find({});
 
   res.status(200).json({
     status: 'success',
@@ -14,7 +16,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteAllUsers = catchAsync(async (req, res, next) => {
-  await User.deleteMany({});
+  await userModel.deleteMany({});
 
   res.status(200).json({
     status: 'success',
@@ -22,79 +24,87 @@ exports.deleteAllUsers = catchAsync(async (req, res, next) => {
     data: 'All users has been deleted',
   });
 });
-const userModel=require('../models/userModel');
 
-// add user
- let addUser = async(req,res)=>{
-   try {
-
-   result=await userModel.create({...req.body});
-   res.status(200).json(result);
-    
-   } catch (error) {
-
-    res.status(501).json(error)
-
-   }
-}
-
-// show users 
-let showUsers = async(req,res)=>{
-   try {
-        result= await  userModel.find({});
-        res.status(200).json(result);
-    
-   } catch (error) {
-    res.status(501).json(error);
-   }
-}
-
+// show users
+let showUsers = async (req, res, next) => {
+  try {
+    result = await userModel.find({});
+    res.status(200).json({
+      status: 'success',
+      length: result.length,
+      data: {
+        result,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 //search users
-let searchUser= async(req,res)=>{
-   try {
-
-    const {id}=await req.params;
-    result=await userModel.findById(id);
-    res.status(200).json(result)
-    
-   } catch (error) {
-     res.status(501).json(error);
-   }
-}
-
+let searchUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    result = await userModel.findById(id);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        result,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // delete user
-let deleteUser=async(req,res)=>{
-   try {
-
-    const {id}=await req.params;
-    result =await userModel.deleteOne({_id:id});
-    res.status(200).json(result)
-    
-    } catch (error) {
-    res.status(501).json(error);
-    }
-}
-
+let deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    result = await userModel.deleteOne({ _id: id });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        result,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 //edit post
 
-let editUser=async(req,res)=>{
-   try {
-    const data=await req.body;
-   result=await   userModel.findByIdAndUpdate({_id:data.id},{
-      f_name:data.f_name, 
-      l_name:data.l_name,
-      email:data.email,
-      password:data.password
-   });
-   res.status(200).json(result)
-    
-
-    } catch (error) {
-    res.status(501).json(error);
+let editUser = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    // if there is error then return Error
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
     }
-}
 
-module.exports={addUser ,showUsers ,searchUser ,deleteUser ,editUser};
+    const data = req.body;
+    result = await userModel.findByIdAndUpdate(
+      { _id: data.id },
+      {
+        f_name: data.f_name,
+        l_name: data.l_name,
+        email: data.email,
+        password: data.password,
+      }
+    );
+    res.status(200).json({
+      status: 'success',
+      data: {
+        result,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { showUsers, searchUser, deleteUser, editUser };

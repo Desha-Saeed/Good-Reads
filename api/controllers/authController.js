@@ -1,9 +1,10 @@
+const { validationResult } = require('express-validator');
 const { catchAsync, AppError } = require('../middlewares/error');
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
+//=======================================================================================================================//
 
-exports.login = async () => {};
-
+//function sign and create token
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.TOKEN_KEY, {
     expiresIn: '20d',
@@ -11,6 +12,14 @@ const signToken = (id) => {
 };
 
 exports.register = catchAsync(async (req, res, next) => {
+  const errors = validationResult(req);
+  // if there is error then return Error
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      success: false,
+      errors: errors.array(),
+    });
+  }
   //create user
   const newUser = await User.create({
     firstName: req.body.firstName,

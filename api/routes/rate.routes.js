@@ -1,27 +1,21 @@
-const express=require('express');
-const Router=express.Router();
-const rateController =require('../controllers/rateController');
-const parser=require('body-parser');
-
+const express = require('express');
+const Router = express.Router();
+const rateController = require('../controllers/rateController');
+const { protect } = require('../middlewares/auth');
 
 // add rate
-Router.post('/rate/add',rateController.addRate)
-
+Router.post('/rate', protect, rateController.addRate);
 
 // show rate
-Router.get('/rate/list',rateController.showRate)
+Router.get('/rate', rateController.showRate);
 
-
-// search rate 
-Router.get('/rate/search/:id',rateController.searchRate)
-
+// search rate
+Router.get('/rate/:id', rateController.searchRate);
 
 // delete rate
-Router.delete('/rate/delete/:id',rateController.deleteRate)
+Router.delete('/rate/:id', rateController.deleteRate);
 
+// edit rate
+Router.put('/rate', rateController.editRate);
 
-// edit rate 
-Router.put('/rate/edit',rateController.editRate)
-
-
-module.exports=Router;
+module.exports = Router;

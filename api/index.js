@@ -1,28 +1,23 @@
 // packages import
-const express =require('express');
-require('dotenv').config();const morgan = require('morgan')
-const cors=require('cors');
+const express = require('express');
+require('dotenv').config();
+const morgan = require('morgan');
+const cors = require('cors');
 const connectDB = require('./config/db_config');
 
 // Routers import
-const userRouter=require('./routes/user.routes');
-const authorRouter=require('./routes/author.routes');
-const bookRouter=require('./routes/book.routes');
-const categoryRouter=require('./routes/category.routes');
-const rateRouter=require('./routes/rate.routes');
-const reviewRouter=require('./routes/review.routes');
-const statusRouter=require('./routes/status.routes');
-
-
-const { body } = require('express-validator');
-const cors = require('cors');
-
-//routes
-const { login, register } = require('./controllers/authController');
+const userRouter = require('./routes/user.routes');
+const authorRouter = require('./routes/author.routes');
+const bookRouter = require('./routes/book.routes');
+const categoryRouter = require('./routes/category.routes');
+const rateRouter = require('./routes/rate.routes');
+const reviewRouter = require('./routes/review.routes');
+const statusRouter = require('./routes/status.routes');
+const authRouter = require('./routes/auth.routes');
 const userControllers = require('./routes/user.routes');
 
 //middleware imports
- const {
+const {
   notFoundErrorHandler,
   globalErrorHandler,
 } = require('./middlewares/error');
@@ -31,12 +26,12 @@ const userControllers = require('./routes/user.routes');
 
 //create app
 const app = express();
-
+const PORT = process.env.PORT || 8000;
 
 //middleware
 app.use(express.json());
-app.use(cors({origin:'*'}));
-app.use(express.urlencoded({extended:true}));
+app.use(cors({ origin: '*' }));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.disable('etag');
@@ -50,28 +45,14 @@ app.use(rateRouter);
 app.use(reviewRouter);
 app.use(statusRouter);
 
-
-const PORT = process.env.PORT || 8000;
-
 // body parser
 app.use(express.json());
-
-//Cross access origin options
-app.use(cors());
 
 //connect to database
 connectDB();
 
 // auth routes
-app.post('/login', login);
-app.post(
-  '/register',
-  body('email').isEmail(),
-  body('password').isStrongPassword(),
-  body('firstName').notEmpty(),
-  body('lastName').notEmpty(),
-  register
-);
+app.use(authRouter);
 app.use('/user', userControllers);
 
 //error middlewares
