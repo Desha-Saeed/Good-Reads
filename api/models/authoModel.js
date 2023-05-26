@@ -2,8 +2,7 @@ const mongoose=require('mongoose');
 
 const postSchema=mongoose.Schema({
     photo:{
-        type:String,
-        required:[false,'please enter photo']
+        type:String
     },
 
     f_name:{

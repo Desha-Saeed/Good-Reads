@@ -3,6 +3,8 @@ const express =require('express');
 const morgan = require('morgan')
 const cors=require('cors');
 const connectDB = require('./config/db_config');
+const bodyparser=require('body-parser');
+const path=require('path');
 
 // Routers import
 const userRouter=require('./routes/user.routes');
@@ -23,12 +25,12 @@ const app = express();
 
 
 //middleware
-app.use(express.json());
+app.use(bodyparser.json());
 app.use(cors({origin:'*'}));
-app.use(express.urlencoded({extended:true}));
+app.use(bodyparser.urlencoded({extended:true}));
 app.use(morgan('dev'));
-app.use(express.static('public'));
-app.disable('etag');
+app.use(express.static(path.join(__dirname, 'assets')));
+// app.disable('etag');
 
 // use middleware routes
 app.use(userRouter);
