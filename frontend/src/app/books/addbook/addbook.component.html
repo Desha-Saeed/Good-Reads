@@ -1,0 +1,46 @@
+<div class=" row ">
+
+    <form class=" shadow-lg p-4 " method="post" enctype="multipart/form-data" [formGroup]="addbook">
+
+        <div class="elm my-4">
+
+            <label >Enter name</label>
+            <input type="text" class="form-control" formArrayName="name">
+
+        </div>
+        <div class="elm my-4">
+
+            <label >Enter Image</label>
+            <input type="file" class="form-control" formArrayName="image">
+
+        </div>
+
+        <div class="elm my-4">
+
+            <label >Select Cetegory</label>
+            <Select class=" form-control my-3" formArrayName="category" >
+               <option *ngFor="let elm of category" value="{{elm._id}}">{{elm.name}}</option>
+               
+            </Select>
+
+        </div>
+
+        <div class="elm my-4">
+
+            <label >Select Author</label>
+            <Select class=" form-control" formArrayName="author">
+
+            </Select>
+
+        </div>
+
+        <div class="elm my-3">
+
+            <input type="submit" class="btn btn-primary">
+
+        </div>
+
+
+    </form>
+
+</div>

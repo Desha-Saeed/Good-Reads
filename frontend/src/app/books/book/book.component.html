@@ -1,0 +1,24 @@
+<div class=" container">
+
+    <h1>books</h1>
+    <!-- <app-addbook></app-addbook> -->
+    <a  routerLink="/addbook" class=" btn btn-primary my-4"> addbook</a>
+ 
+    <table class=" table table-responsive">
+        <thead>
+            <th>photo</th>
+            <th>name</th>
+            <th>author</th>
+            <th>category</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elm of books" class=" my-2">
+                <td>{{elm.photo}}</td>
+                <td>{{elm.name}}</td>
+                <td>{{elm.author_id}}</td>
+                <td>{{elm.category_id}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

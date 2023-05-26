@@ -1,0 +1,78 @@
+<div class="row my-5"  >
+    <h4 class=" text-center">Edit Author</h4>
+    <form action="" enctype="multipart/form-data" method="post" [formGroup]="editauthorform" (ngSubmit)="editauthor()">
+        <div class="elm my-3" >
+
+            <label > Add First Name</label>
+            <input type="text" formControlName="f_name" class="form-control"  >
+            <span *ngIf="editauthorform.controls['f_name'].touched && editauthorform.controls['f_name'].invalid">
+                
+                <span *ngIf="editauthorform.controls['f_name'].errors?.['required']" class="text-danger">
+                        this filed is required
+                </span>
+                <span *ngIf="editauthorform.controls['f_name'].errors?.['minlength']" class="text-danger">
+                   minlegth is 6 char
+                  </span>
+                  <span *ngIf="editauthorform.controls['f_name'].errors?.['maxlength']" class="text-danger">
+                    maxLength is 10 char
+                   </span>
+            </span>
+
+        </div>
+        <div class="elm my-3" >
+
+            <label > Add Last Name</label>
+            <input type="text" formControlName="l_name" class="form-control">
+
+            <span *ngIf="editauthorform.controls['l_name'].touched && editauthorform.controls['f_name'].invalid">
+                
+                <span *ngIf="editauthorform.controls['l_name'].errors?.['required']" class="text-danger">
+                        this filed is required
+                </span>
+                <span *ngIf="editauthorform.controls['l_name'].errors?.['minlength']" class="text-danger">
+                   minlegth is 6 char
+                  </span>
+                  <span *ngIf="editauthorform.controls['l_name'].errors?.['maxlength']" class="text-danger">
+                    maxLength is 10 char
+                   </span>
+            </span>
+
+        </div>
+        <div class="elm my-3" >
+
+            <label > Add Birth Date</label>
+            <input type="date" formControlName="birth_date" class="form-control">
+
+            <span *ngIf="editauthorform.controls['birth_date'].touched && editauthorform.controls['f_name'].invalid">
+                
+                <span *ngIf="editauthorform.controls['birth_date'].errors?.['required']" class="text-danger">
+                        this filed is required
+                </span>
+    
+            </span>
+
+        </div>
+        <div class="elm my-3" >
+
+            <label > Add Photo</label>
+            <input type="file" formControlName="photo" class="form-control">
+
+
+            <span *ngIf="editauthorform.controls['photo'].touched && editauthorform.controls['f_name'].invalid">
+                
+                <span *ngIf="editauthorform.controls['photo'].errors?.['required']" class="text-danger">
+                        this filed is required
+                </span>
+    
+            </span>
+
+        </div>
+
+        <div class="elm my-3" >
+
+          
+            <input type="submit"  class="btn btn-primary " [disabled]="editauthorform.invalid" >
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="row w-100 my-4 p-4">
+
+    <h4>Categories</h4>
+    <!-- <a href="addcategory" class=" btn btn-primary w-25">add_category </a> -->
+    <app-add-catgory></app-add-catgory>
+    <div class="row w-100 mx-3  bg-light p-2 my-2" *ngFor="let elm of category">
+
+        <div class="col">
+
+            <h5>{{elm.name}}</h5>
+
+        </div>
+        <div class="col">
+            <button class=" btn btn-warning m-2" (click)="edit(elm)">Edit</button>
+
+            <button class=" btn btn-danger m-2" (click)="delete(elm)">delete</button>
+          
+
+        </div>
+    </div>
+
+</div>
