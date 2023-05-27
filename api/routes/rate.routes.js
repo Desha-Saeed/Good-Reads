@@ -8,6 +8,7 @@ const {
 
 const { protect } = require('../middlewares/auth');
 const { validate } = require('../middlewares/validations');
+//==============================================================================================================
 
 // add rate
 Router.post(

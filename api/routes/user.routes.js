@@ -4,6 +4,7 @@ const userRouter = require('../controllers/userController');
 const { restrictTo, protect } = require('../middlewares/auth');
 const { userUpdateValidationRules } = require('../validations/user.validation');
 const { validate } = require('../middlewares/validations');
+//==============================================================================================================
 
 // show users
 Router.get('/user', protect, restrictTo('admin'), userRouter.showUsers);

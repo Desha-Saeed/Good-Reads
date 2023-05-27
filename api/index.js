@@ -29,10 +29,10 @@ const PORT = process.env.PORT || 8000;
 
 //middleware
 app.use(express.json());
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(express.static('public'));
+app.use(express.static('assets'));
 app.disable('etag');
 
 // use Routers middleware
