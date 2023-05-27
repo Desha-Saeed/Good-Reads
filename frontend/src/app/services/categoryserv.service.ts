@@ -8,8 +8,8 @@ export class CategoryservService {
 
   constructor(private http:HttpClient) { }
 
-  getcategory(){
-   return this.http.get('http://localhost:8000/category/list');
+  getcategory(page:number,limit:number){
+   return this.http.get(`http://localhost:8000/category/list?page=${page} & limit=${limit}`);
   }
 
 

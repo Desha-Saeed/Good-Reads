@@ -9,12 +9,12 @@ const imagepathe=path.join(__dirname, 'assets');
  let addBook =async(req,res)=>{
     let  myerrors=validationResult(req);
         try {
-            const name='public/img/authors/'+req.body.f_name+req.file.originalname;
+            const name='public/img/books/'+req.body.name+req.file.originalname;
             book= await new bookModel({
-                name:body.name,
+                name:req.body.name,
                 photo:name,
-                category_id:body.category_id,
-                author_id:body.author_id
+                category_id:req.body.category_id,
+                author_id:req.body.author_id
             });
 
             book.save();
@@ -26,14 +26,35 @@ const imagepathe=path.join(__dirname, 'assets');
                 message:myerrors.array()[0].msg,
                 value:myerrors.array()[0].value
               });
+            // console.log(error);
         }
 }
 
 // show book 
 let showBook =async(req,res)=>{
    try {
-     result=await  bookModel.find({});
-     res.status(200).json(result);
+      
+    const  page=req.query.page || 1;
+    const limit=req.query.limit|5;
+        
+
+      bookModel.find().skip((page-1)*limit).limit(limit).exec((error,data)=>{
+        if(!error){
+            bookModel.countDocuments((error,count)=>{
+                if(!error){
+                    const totalPages=Math.ceil(count/limit);
+                    console.log({page:page,limit:limit});
+                    res.status(200).json({
+                        data:data,
+                        page:page,
+                        limit:limit,
+                        totalPages:totalPages
+                    });
+                }
+            })
+        }
+     })
+    
     } 
     catch (error) {
         res.status(501).json(error)
@@ -63,8 +84,12 @@ let searchBook=async(req,res)=>{
 let deleteBook=async(req,res)=>{
     let  myerrors=validationResult(req);
    try {
-    const {id}=await req.params;
-    result=await bookModel.deleteOne({_id:id});
+     const {id}=await req.params;
+     
+     const image=await bookModel.findOne({_id:id});
+     fs.unlink(`./assets/${image.photo}`);
+
+     result=await bookModel.deleteOne({_id:id});
     res.status(200).json(result);
     } 
     catch (error) {

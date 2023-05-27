@@ -11,7 +11,7 @@ const storage=multer.diskStorage({
     },
     filename:(req,file,cb)=>{
       console.log(file.originalname);
-      cb(null,req.body.f_name+file.originalname);
+      cb(null,req.body.name+file.originalname);
     }
   });
 
@@ -22,6 +22,8 @@ const storage=multer.diskStorage({
     const addValidateRules=[
     check('name').isLength({min:4}).withMessage('name > 4 char'),
     check('photo').isString().withMessage(' shoud be string'),
+    check('category_id').not().isEmpty().withMessage('category required'),
+    check('author_id').not().isEmpty().withMessage('author required')
   ]
 
   const idValidatorRules=[
@@ -30,11 +32,11 @@ const storage=multer.diskStorage({
 
 
 // add book
-Router.post('/book/add',addValidateRules,bookController.addBook)
+Router.post('/book/add',addValidateRules,upload.single('photo'),bookController.addBook)
 
 
 // show book
-Router.get('/book/list',bookController.showBook)
+Router.get('/book/list/',bookController.showBook)
 
 
 // search book 

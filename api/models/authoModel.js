@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-
+// const {  validationResult, body } = require('express-validator');
 const postSchema=mongoose.Schema({
     photo:{
         type:String
@@ -7,7 +7,8 @@ const postSchema=mongoose.Schema({
 
     f_name:{
         type:String ,
-         required:[true,'please enter title']
+        required:[true,'please enter title'],
+       
          },
 
     l_name:{

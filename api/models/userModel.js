@@ -1,9 +1,11 @@
 const mongoose=require('mongoose');
-const {isEmail}=require('validator')
+// const {isEmail}=require('validator');
+const { isEmail } = require('express-validator');
 const userSchema=mongoose.Schema({
     f_name:{
         type:String , 
-        required:[true,'enter email']
+        required:[true,'enter email'],
+      
      },
 
     l_name:{
@@ -16,7 +18,7 @@ const userSchema=mongoose.Schema({
         unique:true , 
         lowercase:true,
         required:[true,'Enter  email'],
-        validate:[isEmail,'Enter valid email']
+      
     },
 
     password:{

@@ -1,25 +1,25 @@
-<div class=" row ">
+<div class=" row my-5">
 
-    <form class=" shadow-lg p-4 " method="post" enctype="multipart/form-data" [formGroup]="addbook">
-
+    <form class=" shadow-lg p-4  " method="post" enctype="multipart/form-data" [formGroup]="addbookform" (ngSubmit)="addBook()">
+                <h4 class="text-center ">Add Book</h4>
         <div class="elm my-4">
 
             <label >Enter name</label>
-            <input type="text" class="form-control" formArrayName="name">
+            <input type="text" class="form-control" formControlName="name">
 
         </div>
         <div class="elm my-4">
 
             <label >Enter Image</label>
-            <input type="file" class="form-control" formArrayName="image">
+            <input type="file" class="form-control" formControlName="photo" (change)="addphoto($event)">
 
         </div>
 
         <div class="elm my-4">
 
             <label >Select Cetegory</label>
-            <Select class=" form-control my-3" formArrayName="category" >
-               <option *ngFor="let elm of category" value="{{elm._id}}">{{elm.name}}</option>
+            <Select class=" form-control my-3"  formControlName="category" id="Category" (change)="showcat($event)">
+               <option *ngFor="let elm of categories" [value]="elm._id">{{elm.name}}</option>
                
             </Select>
 
@@ -28,8 +28,8 @@
         <div class="elm my-4">
 
             <label >Select Author</label>
-            <Select class=" form-control" formArrayName="author">
-
+            <Select class=" form-control" formControlName="author" id="Author" (change)="showauth($event)">
+                <option *ngFor="let elm of authors" value="{{elm._id}}">{{elm.f_name}}</option>
             </Select>
 
         </div>

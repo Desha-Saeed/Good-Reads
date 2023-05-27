@@ -69,12 +69,12 @@ let deleteAuthor=async(req,res)=>{
   try {
     const {id}= await req.params;
 
-    author=await authorModel.findById(id);
+    author=await authorModel.findOne({_id:id});
+    fs.unlink(`./assets/${author.photo}`);
 
-    fs.unlink(`/${author.photo}`);
-
-   result=await  authorModel.deleteOne({_id:id})
-   res.status(200).json(result);
+    result=await  authorModel.deleteOne({_id:id})
+     res.status(200).json(author.photo);
+     
    } 
    catch (error) {
     res.status(500).json({

@@ -8,12 +8,12 @@ export class BookservService {
 
   constructor( private http:HttpClient) { }
 
-  getbook(){
-    return this.http.get('http://localhost:8000/book/list');
+  getbook(page:number,limit:number){
+    return this.http.get(`http://localhost:8000/book/list?page=${page}&limit=${limit} `);
   }
 
   addbook(data:any){
     
-    return this.http.post('http://localhost:8000/book/add',{  })
+    return this.http.post('http://localhost:8000/book/add',data)
   }
 }
