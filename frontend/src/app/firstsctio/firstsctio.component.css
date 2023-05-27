@@ -1,0 +1,41 @@
+/* body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 992px){
+  #container {
+      height: 1000px;
+      width: 100%;
+      position: relative;      
+    }
+  }
+    #navi,
+    #infoi {
+      position: absolute;
+      
+    }
+    @media screen and (max-width: 400px){
+    #infoi {
+      display: flex;
+      margin-top: 1200px;
+      margin-left: 1000px;
+      z-index: 5;
+    }}
+    .container{
+        background-color: aqua;
+    }
+     */
+     p{
+      align-items: center;
+      text-align: center;
+      background-color: white;
+      opacity: 90%;
+     }
+    h6{
+      text-align: center;
+    }
+    h6 span{
+      background-color: azure;
+    }
+   
