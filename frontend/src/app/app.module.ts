@@ -9,7 +9,14 @@ import { FirstsctioComponent } from './firstsctio/firstsctio.component';
 import { SSectionComponent } from './s-section/s-section.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { NgOptimizedImage } from '@angular/common';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faUser as fatUser } from '@fortawesome/free-regular-svg-icons'; 
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -18,15 +25,24 @@ import { NgOptimizedImage } from '@angular/common';
     TopNavbarComponent,
     BotNavbarComponent,
     FirstsctioComponent,
-    SSectionComponent
+    SSectionComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     EditorModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+    constructor(library: FaIconLibrary) {
+      library.addIcons(faUser,fatUser );
+    }
+  
+}
