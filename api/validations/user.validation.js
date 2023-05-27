@@ -2,7 +2,7 @@ const { body, check } = require('express-validator');
 
 const userCreateValidationRules = [
   body('firstName').isString().withMessage('Full name must be a string'),
-  check('lastName').isString().withMessage('First name must be a string'),
+  body('lastName').isString().withMessage('First name must be a string'),
 
   body('email').isEmail().withMessage('Invalid email address'),
 
@@ -31,4 +31,4 @@ const userUpdateValidationRules = [
     .withMessage('password is not strong enough'),
 ];
 
-exports.module = { userCreateValidationRules, userUpdateValidationRules };
+module.exports = { userCreateValidationRules, userUpdateValidationRules };

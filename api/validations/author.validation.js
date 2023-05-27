@@ -34,4 +34,4 @@ const authorUpdateValidationRules = [
   check('birth_date').optional().isDate().withMessage('Invalid Date'),
 ];
 
-exports.module = { authorCreateValidationRules, authorUpdateValidationRules };
+module.exports = { authorCreateValidationRules, authorUpdateValidationRules };

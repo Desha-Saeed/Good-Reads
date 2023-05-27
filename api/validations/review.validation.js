@@ -17,4 +17,4 @@ const reviewUpdateValidationRules = [
     .withMessage('Review length should be between 3 and 100 characters'),
 ];
 
-exports.module = { reviewCreateValidationRules, reviewUpdateValidationRules };
+module.exports = { reviewCreateValidationRules, reviewUpdateValidationRules };

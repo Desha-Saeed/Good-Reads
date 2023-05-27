@@ -17,7 +17,7 @@ const categoryUpdateValidationRules = [
     .withMessage('first name length should be between 3 and 20 characters'),
 ];
 
-exports.module = {
+module.exports = {
   categoryCreateValidationRules,
   categoryUpdateValidationRules,
 };

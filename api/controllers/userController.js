@@ -1,19 +1,6 @@
 const { catchAsync } = require('../middlewares/error');
 const userModel = require('../models/userModel');
-const { validationResult } = require('express-validator');
 //=======================================================================================================================//
-
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await userModel.find({});
-
-  res.status(200).json({
-    status: 'success',
-    results: users.length,
-    data: {
-      users,
-    },
-  });
-});
 
 exports.deleteAllUsers = catchAsync(async (req, res, next) => {
   await userModel.deleteMany({});
@@ -28,7 +15,7 @@ exports.deleteAllUsers = catchAsync(async (req, res, next) => {
 // show users
 let showUsers = async (req, res, next) => {
   try {
-    result = await userModel.find({});
+    const result = await userModel.find({});
     res.status(200).json({
       status: 'success',
       length: result.length,
@@ -45,7 +32,7 @@ let showUsers = async (req, res, next) => {
 let searchUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await userModel.findById(id);
+    const result = await userModel.findById(id);
     res.status(200).json({
       status: 'success',
       data: {
@@ -61,7 +48,7 @@ let searchUser = async (req, res, next) => {
 let deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await userModel.deleteOne({ _id: id });
+    const result = await userModel.deleteOne({ _id: id });
     res.status(200).json({
       status: 'success',
       data: {
@@ -77,17 +64,8 @@ let deleteUser = async (req, res, next) => {
 
 let editUser = async (req, res, next) => {
   try {
-    const errors = validationResult(req);
-    // if there is error then return Error
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        success: false,
-        errors: errors.array(),
-      });
-    }
-
     const data = req.body;
-    result = await userModel.findByIdAndUpdate(
+    const result = await userModel.findByIdAndUpdate(
       { _id: data.id },
       {
         f_name: data.f_name,

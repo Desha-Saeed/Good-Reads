@@ -14,8 +14,9 @@ const { validate } = require('../middlewares/validations');
 Router.post(
   '/category',
   validate(categoryCreateValidationRules),
-  restrictTo('admin'),
   protect,
+  restrictTo('admin'),
+
   catgoryController.addCategory
 );
 

@@ -2,19 +2,27 @@ const express = require('express');
 const Router = express.Router();
 const authorConroller = require('../controllers/authorController');
 const { restrictTo, protect } = require('../middlewares/auth');
-
-const multer = require('multer');
 const { validate } = require('../middlewares/validations');
 const {
   authorCreateValidationRules,
   authorUpdateValidationRules,
 } = require('../validations/author.validation');
-const upload = multer({ dest: './public/img/authors' });
+const multer = require('multer');
+const { multerFilter, multerStorageAuthor } = require('../middlewares/multer');
+
+//multer configuration
+
+const upload = multer({
+  storage: multerStorageAuthor,
+  fileFilter: multerFilter,
+});
 
 // add author
 Router.post(
   '/author',
+  upload.single('photo'),
   validate(authorCreateValidationRules),
+  protect,
   restrictTo('admin'),
   upload.single('file.photo'),
   authorConroller.addAuthor
@@ -33,8 +41,9 @@ Router.delete('/author/:id', restrictTo('admin'), authorConroller.deleteAuthor);
 Router.put(
   '/author',
   validate(authorUpdateValidationRules),
-  restrictTo('admin'),
   protect,
+  restrictTo('admin'),
+
   authorConroller.editAuthor
 );
 

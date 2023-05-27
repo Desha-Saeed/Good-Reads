@@ -1,22 +1,16 @@
-const validate = (validationRules) => {
+const { validationResult } = require('express-validator');
+
+const validate = (validations) => {
   return async (req, res, next) => {
-    for (let validation of validationRules) {
-      const result = await validation.run(req);
-      if (result.errors.length) {
-        const extractedErrors = [];
-        errors
-          .array()
-          .map((err) => extractedErrors.push({ [err.param]: err.msg }));
-        return res.status(422).json({
-          status: 'fail',
-          errors: extractedErrors,
-        });
-      }
+    await Promise.all(validations.map((validation) => validation.run(req)));
+
+    const errors = validationResult(req);
+    if (errors.isEmpty()) {
+      return next();
     }
-    return next();
+
+    res.status(400).json({ errors: errors.array() });
   };
 };
 
-module.exports = {
-  validate,
-};
+module.exports = { validate };

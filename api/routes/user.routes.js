@@ -6,7 +6,7 @@ const { userUpdateValidationRules } = require('../validations/user.validation');
 const { validate } = require('../middlewares/validations');
 
 // show users
-Router.get('/user', restrictTo('admin'), userRouter.showUsers);
+Router.get('/user', protect, restrictTo('admin'), userRouter.showUsers);
 
 // search users
 Router.get('/user/:id', userRouter.searchUser);

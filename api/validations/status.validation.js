@@ -17,4 +17,4 @@ const statusUpdateValidationRules = [
     .withMessage('Status length should be between 3 and 100 characters'),
 ];
 
-exports.module = { statusCreateValidationRules, statusUpdateValidationRules };
+module.exports = { statusCreateValidationRules, statusUpdateValidationRules };

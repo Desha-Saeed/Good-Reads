@@ -13,4 +13,4 @@ const rateUpdateValidationRules = [
     .withMessage('rate must be a number'),
 ];
 
-exports.module = { rateCreateValidationRules, rateUpdateValidationRules };
+module.exports = { rateCreateValidationRules, rateUpdateValidationRules };

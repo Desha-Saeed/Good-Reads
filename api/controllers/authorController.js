@@ -3,11 +3,14 @@ const authorModel = require('../models/authoModel');
 // add author
 let addAuthor = async (req, res, next) => {
   try {
+    const authorPath =
+      'public/img/author/' + req.body.name + req.file.originalname;
     result = await authorModel.create(req.body);
     res.status(200).json({
       status: 'success',
       data: {
-        result,
+        ...result,
+        photo: authorPath,
       },
     });
   } catch (error) {

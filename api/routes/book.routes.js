@@ -9,13 +9,24 @@ const {
 
 const { restrictTo, protect } = require('../middlewares/auth');
 const { validate } = require('../middlewares/validations');
+const multer = require('multer');
+const { multerFilter, multerStorageBook } = require('../middlewares/multer');
+
+//multer configuration
+
+const upload = multer({
+  storage: multerStorageBook,
+  fileFilter: multerFilter,
+});
 
 // add book
 Router.post(
   '/book',
+  upload.single('photo'),
   validate(bookCreateValidationRules),
-  restrictTo('admin'),
   protect,
+  restrictTo('admin'),
+
   bookController.addBook
 );
 
@@ -37,8 +48,9 @@ Router.delete(
 Router.put(
   '/book/:id',
   validate(bookUpdateValidationRules),
-  restrictTo('admin'),
   protect,
+  restrictTo('admin'),
+
   bookController.editBook
 );
 

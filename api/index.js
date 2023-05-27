@@ -14,7 +14,6 @@ const rateRouter = require('./routes/rate.routes');
 const reviewRouter = require('./routes/review.routes');
 const statusRouter = require('./routes/status.routes');
 const authRouter = require('./routes/auth.routes');
-const userControllers = require('./routes/user.routes');
 
 //middleware imports
 const {
@@ -44,16 +43,11 @@ app.use(categoryRouter);
 app.use(rateRouter);
 app.use(reviewRouter);
 app.use(statusRouter);
-
-// body parser
-app.use(express.json());
+// auth routes
+app.use(authRouter);
 
 //connect to database
 connectDB();
-
-// auth routes
-app.use(authRouter);
-app.use('/user', userControllers);
 
 //error middlewares
 app.use('*', notFoundErrorHandler);

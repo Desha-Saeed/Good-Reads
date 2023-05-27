@@ -5,11 +5,15 @@ const bookModel = require('../models/bookModel');
 // add book
 let addBook = async (req, res, next) => {
   try {
+    const bookPath = 'public/img/book/' + req.body.name + req.file.originalname;
+
+    console.log(req.file);
     result = await bookModel.create(req.body);
     res.status(200).json({
       status: 'success',
       data: {
-        result,
+        name: req.body.name,
+        photo: bookPath,
       },
     });
   } catch (error) {
