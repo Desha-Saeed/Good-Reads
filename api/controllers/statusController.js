@@ -1,4 +1,5 @@
 const statusModel = require('../models/statusModel');
+const Features = require('../features');
 
 // add status
 let addStatus = async (req, res, next) => {
@@ -18,7 +19,10 @@ let addStatus = async (req, res, next) => {
 // show status
 let showStatus = async (req, res, next) => {
   try {
-    result = await statusModel.find({});
+    const feature = new Features(statusModel.find({}, req.query))
+      .limitFields()
+      .filter();
+    const result = await feature.query;
     res.status(200).json({
       status: 'success',
       data: {
