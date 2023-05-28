@@ -1,13 +1,13 @@
 const multer = require('multer');
 const upload = multer({ dest: './public/img/books' });
 const bookModel = require('../models/bookModel');
+const { AppError } = require('../middlewares/error');
+const Features = require('../features');
 
 // add book
 let addBook = async (req, res, next) => {
   try {
-    console.log(req.file);
-
-    result = await bookModel.create(req.body);
+    const result = await bookModel.create(req.body);
     res.status(200).json({
       status: 'success',
       data: {
@@ -23,9 +23,12 @@ let addBook = async (req, res, next) => {
 // show book
 let showBook = async (req, res, next) => {
   try {
-    result = await bookModel.find({});
+    //execute query
+
+    const features = new Features(bookModel.find(), req.query).paginate();
+    const result = await features.query;
     res.status(200).json({
-      result: 'success',
+      status: 'success',
       data: {
         result,
       },
@@ -39,7 +42,11 @@ let showBook = async (req, res, next) => {
 let searchBook = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await bookModel.findById(id);
+    const result = await bookModel
+      .findById(id)
+      .populate('reviews')
+      .select('review');
+
     res.status(200).json({
       status: 'success',
       data: {
@@ -55,7 +62,7 @@ let searchBook = async (req, res, next) => {
 let deleteBook = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await bookModel.deleteOne({ _id: id });
+    const result = await bookModel.deleteOne({ _id: id });
     res.status(200).json({
       status: 'success',
       data: {
@@ -71,11 +78,8 @@ let deleteBook = async (req, res, next) => {
 
 let editBook = async (req, res, next) => {
   try {
-    const data = req.body;
-    result = await bookModel.findByIdAndUpdate(
-      { _id: data._id },
-      { state: data.state }
-    );
+    const { id } = req.params;
+    result = await bookModel.findByIdAndUpdate({ _id: id }, req.body);
     res.status(200).json({
       status: 'success',
       data: {

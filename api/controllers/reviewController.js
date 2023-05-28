@@ -66,11 +66,8 @@ let deleteReview = async (req, res, next) => {
 
 let editReview = async (req, res, next) => {
   try {
-    const data = req.body;
-    result = await reviewModel.findByIdAndUpdate(
-      { _id: data._id },
-      { state: data.state }
-    );
+    const { id } = req.params;
+    result = await reviewModel.findByIdAndUpdate({ _id: id }, req.body);
     res.status(200).json({
       status: 'success',
       data: {

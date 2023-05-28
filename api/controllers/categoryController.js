@@ -1,3 +1,4 @@
+const Features = require('../features');
 const categoryModel = require('../models/categoryModel');
 
 // add category
@@ -18,9 +19,10 @@ let addCategory = async (req, res, next) => {
 // show category
 let showCategory = async (req, res, next) => {
   try {
-    result = await categoryModel.find({});
+    const feature = new Features(categoryModel.find(), req.query).paginate();
+    const result = await feature.query;
     res.status(200).json({
-      result: 'success',
+      status: 'success',
       data: {
         result,
       },
@@ -66,11 +68,9 @@ let deleteCategory = async (req, res, next) => {
 
 let editCategory = async (req, res, next) => {
   try {
-    const data = req.body;
-    result = await categoryModel.findByIdAndUpdate(
-      { _id: data._id },
-      { state: data.state }
-    );
+    const { id } = req.params;
+
+    result = await categoryModel.findByIdAndUpdate({ _id: id }, req.body, {});
     res.status(200).json({
       status: 'success',
       data: {

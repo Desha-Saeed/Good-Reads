@@ -37,10 +37,11 @@ Router.delete(
 
 // edit category
 Router.put(
-  '/category',
+  '/category/:id',
   validate(categoryUpdateValidationRules),
-  restrictTo('admin'),
   protect,
+  restrictTo('admin'),
+
   catgoryController.editCategory
 );
 

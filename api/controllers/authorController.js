@@ -1,3 +1,4 @@
+const Features = require('../features');
 const authorModel = require('../models/authoModel');
 
 // add author
@@ -19,9 +20,11 @@ let addAuthor = async (req, res, next) => {
 // show author
 let showAuthor = async (req, res, next) => {
   try {
-    result = await authorModel.find({});
+    console.log(req.query);
+    const feature = new Features(authorModel.find({}), req.query).paginate();
+    result = await feature.query;
     res.status(200).json({
-      result: 'success',
+      status: 'success',
       data: {
         result,
       },
@@ -67,11 +70,8 @@ let deleteAuthor = async (req, res, next) => {
 
 let editAuthor = async (req, res, next) => {
   try {
-    const data = req.body;
-    result = await authorModel.findByIdAndUpdate(
-      { _id: data._id },
-      { state: data.state }
-    );
+    const { id } = req.params;
+    result = await authorModel.findByIdAndUpdate({ _id: id }, req.body);
     res.status(200).json({
       status: 'success',
       data: {
