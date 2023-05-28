@@ -25,7 +25,6 @@ Router.post(
   validate(authorCreateValidationRules),
   protect,
   restrictTo('admin'),
-  upload.single('file.photo'),
   authorConroller.addAuthor
 );
 

@@ -66,11 +66,8 @@ let deleteStatus = async (req, res, next) => {
 
 let editStatus = async (req, res, next) => {
   try {
-    const data = req.body;
-    result = await statusModel.findByIdAndUpdate(
-      { _id: data._id },
-      { state: data.state }
-    );
+    const [id] = req.params;
+    result = await statusModel.findByIdAndUpdate({ _id: id }, req.body);
     res.status(200).json({
       status: 'success',
       data: {

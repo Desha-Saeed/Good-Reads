@@ -11,12 +11,7 @@ const { validate } = require('../middlewares/validations');
 //==============================================================================================================
 
 // add rate
-Router.post(
-  '/rate',
-  validate(rateCreateValidationRules),
-  protect,
-  rateController.addRate
-);
+Router.post('/rate', protect, rateController.addRate);
 
 // show rate
 Router.get('/rate', rateController.showRate);

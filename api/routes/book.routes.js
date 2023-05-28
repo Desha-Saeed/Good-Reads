@@ -40,8 +40,9 @@ Router.get('/book/:id', bookController.searchBook);
 // delete book
 Router.delete(
   '/book/:id',
-  restrictTo('admin'),
   protect,
+  restrictTo('admin'),
+
   bookController.deleteBook
 );
 

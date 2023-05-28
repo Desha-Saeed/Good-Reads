@@ -14,8 +14,19 @@ const rateSchema = mongoose.Schema({
 
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'User',
   },
+});
+
+rateSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'book_id',
+    select: 'name',
+  }).populate({
+    path: 'user_id',
+    select: 'firstName lastName email',
+  });
+  next();
 });
 
 const rateModel = mongoose.model('rates', rateSchema);

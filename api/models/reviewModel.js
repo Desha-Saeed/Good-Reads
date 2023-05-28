@@ -14,9 +14,20 @@ const reviewSchema = mongoose.Schema({
 
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'User',
   },
 });
+
+// reviewSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'book_id',
+//     select: 'title',
+//   }).populate({
+//     path: 'user_id',
+//     select: 'firstName lastName email',
+//   });
+//   next();
+// });
 
 const reviewModel = mongoose.model('reviews', reviewSchema);
 

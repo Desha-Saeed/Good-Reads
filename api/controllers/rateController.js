@@ -35,10 +35,29 @@ let searchRate = async (req, res, next) => {
   try {
     const { id } = req.params;
     result = await rateModel.findById(id);
+
+    console.log(id);
+    console.log(result);
+
+    const avgRating = await rateModel.aggregate([
+      {
+        $match: { book_id: result.book_id._id },
+      },
+      {
+        $group: {
+          _id: null,
+          Rate: { $avg: '$rate' },
+        },
+      },
+    ]);
+
+    console.log(avgRating);
+
     res.status(200).json({
       status: 'success',
       data: {
         result,
+        avg: avgRating,
       },
     });
   } catch (error) {
@@ -66,11 +85,8 @@ let deleteRate = async (req, res, next) => {
 
 let editRate = async (req, res, next) => {
   try {
-    const data = req.body;
-    result = await rateModel.findByIdAndUpdate(
-      { _id: data._id },
-      { state: data.state }
-    );
+    const { id } = req.params;
+    result = await rateModel.findByIdAndUpdate({ _id: id }, req.body);
     res.status(200).json({
       status: 'success',
       data: {
