@@ -7,12 +7,14 @@ const Features = require('../features');
 // add book
 let addBook = async (req, res, next) => {
   try {
-    const result = await bookModel.create(req.body);
+    const result = await bookModel.create({
+      ...req.body,
+      photo: req.file.path,
+    });
     res.status(200).json({
       status: 'success',
       data: {
         result,
-        photo: req.file.path,
       },
     });
   } catch (error) {
@@ -25,7 +27,7 @@ let showBook = async (req, res, next) => {
   try {
     //execute query
 
-    const features = new Features(bookModel.find(), req.query).paginate();
+    const features = new Features(bookModel.find({}), req.query).paginate();
     const result = await features.query;
     res.status(200).json({
       status: 'success',
