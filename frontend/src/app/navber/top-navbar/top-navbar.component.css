@@ -1,0 +1,17 @@
+
+  input{
+    height: 20px;
+    width: 500px;
+    display: flex;
+    margin-top: 10px;
+    
+    align-items: flex-end;
+ 
+  }
+  #container{
+    color: black;
+  }
+  a{
+    color: black;
+    font-size:medium;
+  }
