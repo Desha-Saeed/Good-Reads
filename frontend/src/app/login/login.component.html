@@ -1,33 +1,90 @@
-<body>
-<form>
-    <div class="container-fluid" style="background-color:#e6fff3;" >
-        <div class="row" >
-          <div class="col-md-6"style="border-radius: 10%; margin-left:10px">
-            <svg width="100%" height="500px">
-              <rect width="200" height="400" style="fill:#FF751A;" x="80" />
-              <rect width="200" height="300" style="fill:white" rx="25" ry="20"  x="150"y="50" />
-              <image href="../../assets/image/My project.png" width="800px" x="-40"y="-40"></image>
-            </svg>
-            
-          </div>
-          <div class="col-md-6" id="container" >
-            <div class="kkk">
-            <div class="row">
-            <div class="mb-3"  class="col-12">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              </div>
-              <div class="mb-3"  class="col-12">
-                <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
-                <br>
-                <button type="button" class="btn btn-success">Sign in</button>
-              </div>
+<form (ngSubmit)="getLoginInfo(loginForm)" [formGroup]="loginForm">
+  <div class="container-fluid" style="background-color: #e6fff3">
+    <div class="row">
+      <div class="col-md-6" style="border-radius: 10%; margin-left: 10px">
+        <svg width="100%" height="500px">
+          <rect width="200" height="400" style="fill: #ff751a" x="80" />
+          <rect
+            width="200"
+            height="300"
+            style="fill: white"
+            rx="25"
+            ry="20"
+            x="150"
+            y="50"
+          />
+          <image
+            href="../../assets/image/My project.png"
+            width="800px"
+            x="-40"
+            y="-40"
+          ></image>
+        </svg>
+      </div>
+      <div class="col-md-6" id="container">
+        <div class="kkk">
+          <div class="row">
+            <div class="mb-3" class="col-12">
+              <label
+                for="exampleFormControlInput1"
+                [class.is-valid]="
+                  loginForm.get('email')?.errors == null &&
+                  loginForm.get('email')?.touched
+                "
+                class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="name@example.com"
+              />
+              <p
+                *ngIf="
+                  loginForm.get('email')?.errors != null &&
+                  loginForm.get('email')?.touched
+                "
+                class="py-2 text-danger"
+              >
+                Invalid email
+              </p>
             </div>
+            <div class="mb-3" class="col-12">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                [class.is-valid]="
+                  loginForm.get('password')?.errors == null &&
+                  loginForm.get('password')?.touched
+                "
+                formControlName="password"
+                placeholder="Password"
+              />
+              <p
+                *ngIf="
+                  loginForm.get('password')?.errors != null &&
+                  loginForm.get('password')?.touched
+                "
+                class="py-2 text-danger"
+              >
+                Invalid password
+              </p>
+
+              <button
+                type="submit"
+                [disabled]="loginForm.invalid"
+                class="btn btn-success"
+              >
+                Sign in
+              </button>
             </div>
           </div>
-            
-          </div>
-          </div>
-  </form>
-</body>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

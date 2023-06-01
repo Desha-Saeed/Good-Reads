@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavberComponent } from './navber/navber.component';
 import { TopNavbarComponent } from './navber/top-navbar/top-navbar.component';
@@ -17,6 +17,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faUser as fatUser } from '@fortawesome/free-regular-svg-icons'; 
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,10 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
     EditorModule,
     NgOptimizedImage,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

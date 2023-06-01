@@ -6,12 +6,14 @@ const {
   statusUpdateValidationRules,
 } = require('../validations/status.validation');
 const { validate } = require('../middlewares/validations');
+const { protect } = require('../middlewares/auth');
 //==============================================================================================================
 
 // add status
 Router.post(
   '/status',
   validate(statusCreateValidationRules),
+  protect,
   statusController.addStatus
 );
 
@@ -28,6 +30,7 @@ Router.delete('/status/:id', statusController.deleteStatus);
 Router.put(
   '/status/:id',
   validate(statusUpdateValidationRules),
+  protect,
   statusController.editStatus
 );
 

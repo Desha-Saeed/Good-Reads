@@ -27,7 +27,9 @@ let showBook = async (req, res, next) => {
   try {
     //execute query
 
-    const features = new Features(bookModel.find({}), req.query).paginate();
+    const features = new Features(bookModel.find({}), req.query)
+      .paginate()
+      .filter();
     const result = await features.query;
     res.status(200).json({
       status: 'success',
