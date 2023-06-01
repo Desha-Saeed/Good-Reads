@@ -1,6 +1,6 @@
 #container{
     background-color:white;
-    border-radius: 20%;
+    border-radius: 10%;
     margin-top: 40px;
     opacity: 80%;
     width: 490px;
@@ -15,6 +15,6 @@
         
        
     }
-    /* button{
-     margin-left: 220px;
-    } */
+    button{
+     background-color: rgb(83, 85, 230);
+    }

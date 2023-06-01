@@ -30,12 +30,16 @@
       align-items: center;
       text-align: center;
       background-color: white;
-      opacity: 90%;
+      opacity: 80%;
+      margin-top: 100PX;
+      border-radius: 2px;
      }
     h6{
       text-align: center;
     }
     h6 span{
-      background-color: azure;
+      background-color: white;
+      padding: 5px;
+      opacity: 80%;
     }
    
