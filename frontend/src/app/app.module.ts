@@ -28,6 +28,16 @@ import { BooksComponent } from './books/books.component';
 import { BooksCardComponent } from './books-card/books-card.component';import {HttpClientModule} from '@angular/common/http';
 import { UserHomeComponent } from './user-home/user-home.component'
 
+import { BooksModule } from './books/books.module';
+
+import { PartsModule } from './parts/parts.module';
+import { CategoryModule } from './category/category.module';
+import { AuthorModule } from './author/author.module';
+import { MainModule } from './main/main.module';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +57,20 @@ import { UserHomeComponent } from './user-home/user-home.component'
     BooksCardComponent,
     UserHomeComponent,
   ],
+  
   imports: [
+    BrowserModule,
+    BooksModule,
+    PartsModule,
+    CategoryModule,
+    AuthorModule,
+   
+    FormsModule,
+    FontAwesomeModule,
+    MainModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     EditorModule,
@@ -60,6 +83,8 @@ import { UserHomeComponent } from './user-home/user-home.component'
     BrowserAnimationsModule,
     RouterModule
     
+    
+
   ],
   
   providers: [],

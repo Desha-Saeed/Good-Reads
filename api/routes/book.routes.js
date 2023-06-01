@@ -25,8 +25,7 @@ Router.post(
   '/book',
   upload.single('photo'),
   validate(bookCreateValidationRules),
-  protect,
-  restrictTo('admin'),
+  
 
   bookController.addBook
 );
@@ -40,8 +39,7 @@ Router.get('/book/:id', bookController.searchBook);
 // delete book
 Router.delete(
   '/book/:id',
-  protect,
-  restrictTo('admin'),
+ 
 
   bookController.deleteBook
 );
@@ -50,8 +48,7 @@ Router.delete(
 Router.put(
   '/book/:id',
   validate(bookUpdateValidationRules),
-  protect,
-  restrictTo('admin'),
+ 
 
   bookController.editBook
 );

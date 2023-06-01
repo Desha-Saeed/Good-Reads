@@ -36,12 +36,10 @@ let showStatus = async (req, res, next) => {
 let searchStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await statusModel.findById(id);
+    console.log(id);
+    result = await statusModel.findOne({ book_id: id });
     res.status(200).json({
-      status: 'success',
-      data: {
-        result,
-      },
+      result: result,
     });
   } catch (error) {
     next(error);

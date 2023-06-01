@@ -23,8 +23,7 @@ Router.post(
   '/author',
   upload.single('photo'),
   validate(authorCreateValidationRules),
-  protect,
-  restrictTo('admin'),
+  
   authorConroller.addAuthor
 );
 
@@ -35,15 +34,13 @@ Router.get('/author', authorConroller.showAuthor);
 Router.get('/author/:id', authorConroller.searchAuthor);
 
 // delete author
-Router.delete('/author/:id', restrictTo('admin'), authorConroller.deleteAuthor);
+Router.delete('/author/:id', authorConroller.deleteAuthor);
 
 // edit author
 Router.put(
   '/author',
   validate(authorUpdateValidationRules),
-  protect,
-  restrictTo('admin'),
-
+ 
   authorConroller.editAuthor
 );
 

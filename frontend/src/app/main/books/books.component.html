@@ -1,0 +1,9 @@
+<div class="row my-5">
+    <h2>bookss</h2>
+<div class="col" *ngFor="let elm of books">
+    <span><img src="http://localhost:4000/{{elm.photo}}" alt="{{elm.photo}}" width="50"></span>
+    <h3 (click)="goToBook(elm._id )">{{elm.name}}</h3>
+    <h4 (click)="goToAuthor(elm.author_id)">{{elm.author_id.f_name}}</h4>
+   
+</div>
+</div>

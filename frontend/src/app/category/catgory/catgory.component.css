@@ -1,0 +1,9 @@
+.pagination{
+
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    gap: 70%;
+    left: 10%;
+}
