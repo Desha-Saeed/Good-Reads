@@ -22,9 +22,6 @@ rateSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'book_id',
     select: 'name',
-  }).populate({
-    path: 'user_id',
-    select: 'firstName lastName email',
   });
   next();
 });

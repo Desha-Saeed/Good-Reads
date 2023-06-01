@@ -17,7 +17,16 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faUser as fatUser } from '@fortawesome/free-regular-svg-icons'; 
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import {HttpClientModule} from '@angular/common/http'
+import { BodyComponent } from './body/body.component';
+import { SidnevComponent } from './sidnev/sidnev.component';
+import { ReadComponent } from './read/read.component';
+import { CurrentlyReadingComponent } from './currently-reading/currently-reading.component';
+import { WantToReadComponent } from './want-to-read/want-to-read.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { BooksComponent } from './books/books.component';
+import { BooksCardComponent } from './books-card/books-card.component';import {HttpClientModule} from '@angular/common/http';
+import { UserHomeComponent } from './user-home/user-home.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +37,15 @@ import {HttpClientModule} from '@angular/common/http'
     FirstsctioComponent,
     SSectionComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BodyComponent,
+    SidnevComponent,
+    ReadComponent,
+    CurrentlyReadingComponent,
+    WantToReadComponent,
+    BooksComponent,
+    BooksCardComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,8 +56,12 @@ import {HttpClientModule} from '@angular/common/http'
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule
+    ,
+    BrowserAnimationsModule,
+    RouterModule
     
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

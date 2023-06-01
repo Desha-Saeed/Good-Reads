@@ -1,19 +1,28 @@
-
-<div class="container-fluid" style="background-color:#F28842;" >
-  <div class="row" >
+<div class="container-fluid p-2" style="background-color: #f28842">
+  <div class="row">
     <div class="col-md-6">
-        <input type="text" id="inputPassword6" class="form-control" >
-     </div>
-     <div class="col-md-6" id="container" >
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="login">
-          <fa-icon [icon]="faCoffee" class="fa-lg" ></fa-icon>  My Account</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="register">Sign up</a>
-      </li>
-    </ul>
+      <input
+        type="text"
+        id="inputPassword6"
+        class="form-control p-3 text-center"
+      />
     </div>
-   </div>
-   </div>
+    <div class="col-md-6" id="container">
+      <ul class="nav justify-content-end">
+        <li class="nav-item" *ngIf="isLogin">
+          <a class="nav-link"> My Account</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLogin">
+          <a class="nav-link" routerLink="login"> Log in</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLogin">
+          <a class="nav-link" routerLink="register">Sign up</a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLogin">
+          <a class="nav-link"> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

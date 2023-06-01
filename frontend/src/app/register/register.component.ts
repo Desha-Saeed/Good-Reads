@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from '../services/auth.service'
+import { Router } from '@angular/router';
 
 FormControl
 
@@ -11,16 +12,20 @@ FormControl
 })
 export class RegisterComponent {
 
-  constructor(private _AuthService: AuthService) {}
+  constructor(private _AuthService: AuthService, private _Router: Router) {}
 
   registerForm!: FormGroup;
 
   getRegisterInfo(registerForm: FormGroup) {
     //check if form is valid
     if(registerForm.valid == true) {
-     
+    
+      
       this._AuthService.register(registerForm.value).subscribe((data)=> {
-        console.log(data);
+            
+    if(data.status == 'success') {
+      this._Router.navigate(['login'])
+    }
         
       });
     } 

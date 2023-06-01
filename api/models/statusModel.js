@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const statusSchema = mongoose.Schema({
   state: {
     type: String,
-    enum: ['read', 'wanttoread', 'reading'],
-    required: [true, 'please enter title'],
+
+    required: [true, 'please enter state'],
   },
 
   book_id: {
@@ -23,9 +23,6 @@ statusSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'book_id',
     select: 'title',
-  }).populate({
-    path: 'user_id',
-    select: 'firstName lastName email',
   });
   next();
 });
