@@ -22,7 +22,7 @@ const statusSchema = mongoose.Schema({
 statusSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'book_id',
-    select: 'title',
+    select: 'name',
   }).populate({
     path: 'user_id',
     select: 'firstName lastName email',

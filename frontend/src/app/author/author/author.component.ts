@@ -23,7 +23,7 @@ export class AuthorComponent {
   moveto(id:number){
     console.log(id);
     
-    this.router.navigate(['editauthor',id]);
+    this.router.navigate(['/admin/editauthor',id]);
   }
 
 

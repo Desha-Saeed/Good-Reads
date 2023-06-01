@@ -20,8 +20,20 @@ export class HomeComponent {
   }
 
   getbooks(){
-    this.bookserv.getbook(1,50).subscribe((res:any)=>{
-      this.mybook=res.data;
+    this.bookserv.getbook(1,20).subscribe((res:any)=>{
+      this.mybook=res.result;
+      console.log(this.mybook);
+      
     })
+  }
+  All(){
+
+  }
+  Reading(){
+
+  }
+
+  notReading(){
+    
   }
 }

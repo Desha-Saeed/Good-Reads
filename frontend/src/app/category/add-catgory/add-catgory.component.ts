@@ -27,7 +27,7 @@ export class AddCatgoryComponent {
       this.categoryserv.addcategory(this.addform.get('category')?.value).subscribe(data=>{
     
         console.log(data); 
-          // location.reload();
+           location.reload();
       }
       )
     

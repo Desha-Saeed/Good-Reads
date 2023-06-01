@@ -19,15 +19,12 @@ let addStatus = async (req, res, next) => {
 // show status
 let showStatus = async (req, res, next) => {
   try {
-    const feature = new Features(statusModel.find({}, req.query))
-      .limitFields()
-      .filter();
-    const result = await feature.query;
-    res.status(200).json({
-      status: 'success',
-      data: {
-        result,
-      },
+    const result = statusModel.find({});
+   
+    res.status(200).json(
+       {
+        result:result
+      
     });
   } catch (error) {
     next(error);
@@ -37,13 +34,12 @@ let showStatus = async (req, res, next) => {
 //search status
 let searchStatus = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    result = await statusModel.findById(id);
+    const {id}  = req.params;
+    console.log(id);
+    result = await statusModel.findOne({book_id:id});
     res.status(200).json({
-      status: 'success',
-      data: {
-        result,
-      },
+        result:result
+     
     });
   } catch (error) {
     next(error);

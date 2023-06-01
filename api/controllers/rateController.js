@@ -34,14 +34,14 @@ let showRate = async (req, res, next) => {
 let searchRate = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await rateModel.findById(id);
+   
 
     console.log(id);
-    console.log(result);
+  
 
     const avgRating = await rateModel.aggregate([
       {
-        $match: { book_id: result.book_id._id },
+        $match: { book_id: id },
       },
       {
         $group: {
@@ -54,11 +54,8 @@ let searchRate = async (req, res, next) => {
     console.log(avgRating);
 
     res.status(200).json({
-      status: 'success',
-      data: {
-        result,
+   
         avg: avgRating,
-      },
     });
   } catch (error) {
     next(error);

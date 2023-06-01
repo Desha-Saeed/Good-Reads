@@ -46,8 +46,12 @@ export class EditbookComponent {
 
   getbook(){
     const id=  this.activeroute.snapshot.params['id'];
+    console.log(id);
+    
    this.bookserv.searchbook(id).subscribe((res:any)=>{
       this.book=res.result;
+      console.log(this.book);
+      
       this.editBookForm.patchValue({name:this.book.name,author:this.book.author_id , category:this.book.category_id });
    })
     
@@ -96,7 +100,7 @@ export class EditbookComponent {
         
       this.bookserv.editbook(formdata).subscribe((res)=>{
         console.log('data sent');
-         location.replace('/');
+         location.replace('/admin/book');
       },
       (error)=>{
         console.log(error);

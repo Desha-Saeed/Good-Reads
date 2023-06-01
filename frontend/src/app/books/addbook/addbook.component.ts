@@ -81,7 +81,7 @@ export class AddbookComponent {
         
       this.bookserv.addbook(formdata).subscribe((res)=>{
         console.log('data sent');
-        location.replace('/book');
+        location.replace('/admin/book');
       },
       (error)=>{
         console.log(error);

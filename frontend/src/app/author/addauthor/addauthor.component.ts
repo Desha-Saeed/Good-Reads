@@ -43,7 +43,7 @@ export class AddauthorComponent {
           
         this.authorserv.addauthor(formdata).subscribe(res=>{
           console.log(res);
-          location.replace('author');
+          location.replace('/admin/author');
         },error=>{
           console.log(error);
           

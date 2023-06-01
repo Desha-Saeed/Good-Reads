@@ -42,11 +42,10 @@ let showBook = async (req, res, next) => {
 //search book
 let searchBook = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const {id}  = req.params;
+    console.log(id);
     const result = await bookModel
-      .findById(id)
-      .populate('reviews')
-      .select('review');
+      .findById(id);
 
       console.log(result);
     res.status(200).json({

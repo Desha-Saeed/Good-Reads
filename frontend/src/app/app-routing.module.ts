@@ -11,6 +11,8 @@ import { EditbookComponent } from './books/editbook/editbook.component';
 import { HomeComponent } from './main/home/home.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+import { BooksComponent } from './main/books/books.component';
+import { SingelBookComponent } from './main/singel-book/singel-book.component';
 
 const routes: Routes = [
   {
@@ -26,39 +28,47 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
-    path:'book',
+    path:'books',
+    component:BooksComponent
+  },
+  {
+    path:'book/:id',
+    component:SingelBookComponent
+  },
+  {
+    path:'admin/book',
     component:BookComponent
   },
   {
-    path:'addbook',
+    path:'admin/addbook',
     component:AddbookComponent
   },
   {
-    path:'editBook/:id',
+    path:'admin/editBook/:id',
     component:EditbookComponent
   },
 
 
   {
-    path:'category',
+    path:'admin/category',
     component:CatgoryComponent
   },
   {
-    path:'addcategory',
+    path:'admin/addcategory',
     component:AddCatgoryComponent
   },
 
 
   {
-    path:'author',
+    path:'admin/author',
     component:AuthorComponent,
   },
   {
-    path:'addauthor',
+    path:'admin/addauthor',
     component:AddauthorComponent
   },
   {
-    path:'editauthor/:id',
+    path:'admin/editauthor/:id',
     component:EditauthorComponent
   },
   {

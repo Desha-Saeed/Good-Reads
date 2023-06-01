@@ -86,7 +86,7 @@ export class EditauthorComponent {
       
     this.authorserv.editauthor(formdata).subscribe((res)=>{
       console.log('data sent');
-       location.replace('author');
+       location.replace('/admin/author');
     },
     (error)=>{
      

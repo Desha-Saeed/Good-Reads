@@ -29,4 +29,12 @@ export class BookservService {
   searchbook(id:any){
     return this.http.get(`http://localhost:4000/book/${id} `);
   }
+
+  getbookState(id:any){
+    return this.http.get(`http://localhost:4000/status/${id}`);
+  }
+
+  getRate(id:any){
+    return this.http.get(`http://localhost:4000/rate/${id}`);
+  }
 }

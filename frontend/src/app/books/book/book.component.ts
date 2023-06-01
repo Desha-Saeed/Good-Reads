@@ -62,7 +62,7 @@ export class BookComponent {
   }
 
   moveto(id:number){
-    this.router.navigate(['editBook',id]);
+    this.router.navigate(['/admin/editBook',id]);
   }
 
 }
