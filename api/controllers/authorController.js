@@ -4,12 +4,17 @@ const authorModel = require('../models/authoModel');
 // add author
 let addAuthor = async (req, res, next) => {
   try {
-    result = await authorModel.create(req.body);
+    result = await authorModel.create({
+      f_name:req.body.f_name,
+      l_name:req.body.l_name,
+      birth_date:req.body.birth_date,
+      photo:`/img/authors/image-${req.file.fieldname}-${Date.now()}`
+    });
     res.status(200).json({
       status: 'success',
       data: {
         result,
-        photo: req.file.path,
+        photo:`/img/authors/image-${req.file.fieldname}-${Date.now()}`,
       },
     });
   } catch (error) {
@@ -23,12 +28,11 @@ let showAuthor = async (req, res, next) => {
     console.log(req.query);
     const feature = new Features(authorModel.find({}), req.query).paginate();
     result = await feature.query;
+    console.log(result);
     res.status(200).json({
-      status: 'success',
-      data: {
-        result,
+        result:result
       },
-    });
+    );
   } catch (error) {
     next(error);
   }
@@ -38,12 +42,12 @@ let showAuthor = async (req, res, next) => {
 let searchAuthor = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await authorModel.findById(id);
+    result = await authorModel.findOne({_id:id});
+    console.log(result);
     res.status(200).json({
-      status: 'success',
-      data: {
-        result,
-      },
+    
+        result:result
+   
     });
   } catch (error) {
     next(error);
@@ -70,8 +74,14 @@ let deleteAuthor = async (req, res, next) => {
 
 let editAuthor = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    result = await authorModel.findByIdAndUpdate({ _id: id }, req.body);
+    const data = req.body;
+    console.log(data);
+    result = await authorModel.findByIdAndUpdate({ _id: data.id },{
+      f_name:data.f_name,
+      l_name:data.l_name,
+      birth_date:data.birth_date,
+      photo:data.birth_date
+    });
     res.status(200).json({
       status: 'success',
       data: {

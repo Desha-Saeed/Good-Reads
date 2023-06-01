@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(express.static('assets'));
+app.use(express.static('./assets'));
 app.disable('etag');
 
 // use Routers middleware

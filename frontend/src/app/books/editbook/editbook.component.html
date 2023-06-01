@@ -1,0 +1,72 @@
+<div class=" row my-5">
+
+    <form class=" shadow-lg p-4  " method="post" enctype="multipart/form-data" [formGroup]="editBookForm" (ngSubmit)="editbook()">
+                <h4 class="text-center ">Edit Book</h4>
+        <div class="elm my-4">
+
+            <label >Enter name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <span *ngIf="editBookForm.controls['name'].touched && editBookForm.controls['name'].invalid">
+                
+                <span *ngIf=" editBookForm.controls['name'].errors?.['required']" class="text-danger">
+                        this filed is required
+                </span>
+                <span *ngIf="editBookForm.controls['name'].errors?.['minlength']" class="text-danger">
+                    minLength is 5 
+                 </span>
+              
+            </span>
+
+        </div>
+        <div class="elm my-4">
+
+            <label >Enter Image</label>
+
+            <input type="file" class="form-control" formControlName="photo" (change)="addphoto($event)">
+           <div class="my-4">
+            <span>current image </span>
+            <img src="http://localhost:4000/{{book.photo}}" alt="" width="70" >
+           </div>
+
+           <span *ngIf="editBookForm.controls['photo'].touched && editBookForm.controls['photo'].invalid">
+                
+            <span *ngIf=" editBookForm.controls['name'].errors?.['required']" class="text-danger">
+                    this filed is required
+            </span>
+           
+          
+        </span>
+
+        </div>
+
+        <div class="elm my-4">
+
+            <label >Select Cetegory</label>
+            <Select class=" form-control my-3"  formControlName="category" id="Category" (change)="showcat($event)">
+                <option ></option>
+               <option *ngFor="let elm of categories" [value]="elm._id">{{elm.name}}</option>
+               
+            </Select>
+
+        </div>
+
+        <div class="elm my-4">
+
+            <label >Select Author</label>
+            <Select class=" form-control" formControlName="author" id="Author" (change)="showauth($event)">
+                <option  ></option>
+                <option *ngFor="let elm of authors" value="{{elm._id}}">{{elm.f_name}}</option>
+            </Select>
+
+        </div>
+
+        <div class="elm my-3">
+
+            <input type="submit" class="btn btn-primary">
+
+        </div>
+
+
+    </form>
+
+</div>

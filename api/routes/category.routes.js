@@ -15,8 +15,8 @@ const { validate } = require('../middlewares/validations');
 Router.post(
   '/category',
   validate(categoryCreateValidationRules),
-  protect,
-  restrictTo('admin'),
+
+
 
   catgoryController.addCategory
 );
@@ -30,8 +30,7 @@ Router.get('/category/:id', catgoryController.searchCategory);
 // delete category
 Router.delete(
   '/category/:id',
-  protect,
-  restrictTo('admin'),
+
   catgoryController.deleteCategory
 );
 
@@ -39,8 +38,7 @@ Router.delete(
 Router.put(
   '/category/:id',
   validate(categoryUpdateValidationRules),
-  protect,
-  restrictTo('admin'),
+ 
 
   catgoryController.editCategory
 );

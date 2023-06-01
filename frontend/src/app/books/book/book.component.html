@@ -1,0 +1,42 @@
+<div class=" container-fluid">
+
+    <h1>books</h1>
+    <!-- <app-addbook></app-addbook> -->
+    <a  routerLink="/addbook" class=" btn btn-primary my-4"> Add Book</a>
+ 
+    <table class=" table  bg-light  table-active w-100 ">
+        <thead class="p-2">
+            <th>photo</th>
+            <th>name</th>
+            <th>author</th>
+            <th>category</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elm of books" class=" my-2">
+                <td><img src="http://localhost:8000/{{elm.photo}}" alt="{{elm.photo}}" width="50"></td>
+                <td>{{elm.name}}::{{elm?.rate}}</td>
+                <td>{{elm.author_id.f_name}}</td>
+                <td>{{elm.category_id.name}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="moveto(elm._id)" >edit </button>
+                    <button class="btn btn-warning" (click)="delete(elm._id)">Delete</button>
+
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class=" pagination mt-5 ">
+
+        
+            <button class="btn btn-primary  px-3" [disabled]="page==1" (click)="prevPage()"> Prev </button>
+      
+      
+            <button class="btn btn-primary  px-3" [disabled]="page==totalPages" (click)="nextPage()"> Next </button>
+       
+
+    </div>
+</div>

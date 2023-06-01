@@ -18,7 +18,7 @@ const multerStorageAuthor = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `image-${file.fieldname}-${Date.now()}.${ext}`);
+    cb(null, `image-${file.fieldname}-${Date.now()}`);
   },
 });
 
