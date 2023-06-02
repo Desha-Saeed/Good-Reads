@@ -32,6 +32,8 @@ import { PartsModule } from './parts/parts.module';
 import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
 import { MainModule } from './main/main.module';
+import { CategoriesComponent } from './categories/categories.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -54,6 +56,8 @@ import { MainModule } from './main/main.module';
     BooksComponent,
     BooksCardComponent,
     UserHomeComponent,
+    CategoriesComponent,
+    FooterComponent,
   ],
   
   imports: [

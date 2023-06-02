@@ -1,5 +1,6 @@
 <form (ngSubmit)="getRegisterInfo(registerForm)" [formGroup]="registerForm">
-  <div class="container-fluid" style="background-color: #e6fff3">
+  
+  <div class="container-fluid" style="background-color: rgb(20, 38, 199);">
     <div class="row">
       <div class="col-6" style="border-radius: 10%; margin-left: 10px">
         <svg width="100%" height="500px">
@@ -16,7 +17,7 @@
           <image
             href="../../assets/image/My project.png"
             width="800px"
-            x="-40"
+            x="-60"
             y="-40"
           ></image>
         </svg>
@@ -25,7 +26,7 @@
         <div class="kkk">
           <div class="row">
             <div class="m-3" class="col-12">
-              <label for="exampleFormControlInput1" class="form-label"
+              <label for="exampleFormControlInput1" class="form-label" 
                 >First Name</label
               >
               <input
@@ -36,7 +37,7 @@
                   registerForm.get('firstName')?.errors == null &&
                   registerForm.get('firstName')?.touched
                 "
-              />
+                placeholder="enter your first name"      />
               <p
                 *ngIf="
                   registerForm.get('firstName')?.errors != null &&
@@ -59,6 +60,7 @@
                   registerForm.get('lastName')?.errors == null &&
                   registerForm.get('lastName')?.touched
                 "
+                placeholder="enter your last name" 
               />
               <p
                 *ngIf="
@@ -82,6 +84,7 @@
                   registerForm.get('email')?.errors == null &&
                   registerForm.get('email')?.touched
                 "
+                placeholder="name@example.com" 
               />
               <p
                 *ngIf="
@@ -105,12 +108,14 @@
                   registerForm.get('password')?.errors == null &&
                   registerForm.get('password')?.touched
                 "
+                placeholder="password" 
               />
               <p
                 *ngIf="
                   registerForm.get('password')?.errors != null &&
                   registerForm.get('password')?.touched
                 "
+                
                 class="py-2 text-danger"
               >
                 Invalid password
@@ -127,7 +132,8 @@
                 [class.is-valid]="
                   registerForm.get('confirmPassword')?.errors == null &&
                   registerForm.get('confirmPassword')?.touched
-                "
+                " 
+                placeholder="repeat password" 
               />
               <p
                 *ngIf="

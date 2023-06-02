@@ -15,7 +15,7 @@ export class AddauthorComponent {
 
   constructor(private fbuilder:FormBuilder , private authorserv:AuthorservService){
     this.addauthorform=this.fbuilder.group({
-      f_name:[null,[Validators.required,Validators.minLength(6),Validators.maxLength(10)]],
+      f_name:[null,[Validators.required,Validators.minLength(3),Validators.maxLength(10)]],
       l_name:[null,[Validators.required,Validators.minLength(6),Validators.maxLength(10)]],
       birth_date:[null,[Validators.required]],
       photo:['']

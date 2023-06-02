@@ -1,10 +1,10 @@
 #container{
     background-color:white;
     border-radius: 10%;
-    margin-top: 40px;
+    margin-top: 10px;
     opacity: 80%;
     width: 490px;
-    height: 400px; 
+    height: 480px; 
     justify-content: center;
         display: flex;
         
@@ -17,4 +17,7 @@
     }
     button{
      background-color: rgb(83, 85, 230);
+     margin-top: 40px;
+     width: 300px;
+     margin-left: 10px;
     }

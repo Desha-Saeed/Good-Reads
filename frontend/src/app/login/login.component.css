@@ -1,7 +1,7 @@
 #container{
 background-color:white;
 border-radius: 10%;
-margin-top: 40px;
+margin-top: 30px;
 opacity: 80%;
 width: 490px;
 height: 400px; 
@@ -16,5 +16,8 @@ justify-content: center;
    
 }
 button{
- margin-left: 220px;
+    background-color: rgb(83, 85, 230);
+    margin-top: 15px;
+    width: 300px;
+    margin-left: 3px;
 }
