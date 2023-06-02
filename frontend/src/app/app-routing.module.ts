@@ -14,18 +14,6 @@ const routes: Routes = [
     path:'books',
     component:BooksComponent   
   },
-  {
-    path:'read',
-    component:ReadComponent 
-  },
-  {
-    path:'currently reading',
-    component:CurrentlyReadingComponent 
-  },
-  {
-    path:'want to read',
-    component:WantToReadComponent  
-  },
   
   {path:"",
 component:FirstsctioComponent },
@@ -37,10 +25,7 @@ component:FirstsctioComponent },
     path:"register",
     component:RegisterComponent
   },
-  {
-    path:"sidnev",
-    component:SidnevComponent 
-  }
+  
 
 ];
 
