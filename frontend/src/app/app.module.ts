@@ -27,7 +27,7 @@ import { BooksCardComponent } from './books-card/books-card.component';import {H
 import { UserHomeComponent } from './user-home/user-home.component'
 
 import { BooksModule } from './books/books.module';
-
+import {NgxPaginationModule} from 'ngx-pagination'; 
 import { PartsModule } from './parts/parts.module';
 import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
@@ -62,6 +62,7 @@ import { MainModule } from './main/main.module';
     PartsModule,
     CategoryModule,
     AuthorModule,
+    NgxPaginationModule,
   
 
    

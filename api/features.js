@@ -37,13 +37,7 @@ class Features {
 
     this.query = this.query.skip(skip).limit(limit);
 
-    
-
-    return {
-      query:this.query,
-      page:page,
-      limit:limit
-    }
+    return this;
   }
 }
 

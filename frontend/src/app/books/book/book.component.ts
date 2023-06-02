@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PagenateInterFace } from 'src/app/interFaces/book/pagenate-inter-face';
+
 
 import { BookservService } from 'src/app/services/bookserv.service';
 
@@ -11,44 +11,30 @@ import { BookservService } from 'src/app/services/bookserv.service';
 })
 export class BookComponent {
 
-  books:any;
-  page=1;
-  limit=10;
-  totalPages=0;
+  books!: any[] ;
+  currentPage = 1; // start with the first page
+  itemsPerPage = 2; // show 5 items per page
   constructor(private bookser:BookservService ,private router:Router){}
 
   ngOnInit(){
   this.getdata();
+
    
   }
 
   // get data 
    getdata(){
-        this.bookser.getbook(this.page,this.limit).subscribe((res:any)=>{
+        this.bookser.getbook().subscribe((res:any)=>{
+
+         console.log(res);
+          
         this.books=res.result;
-        this.page=res.page;
-        this.limit=res.limit;
-        this.totalPages=res.result.length;
+        
       })
    
    }
 
-   // prev button
-   prevPage(){
-    if(this.page>1){
-      this.page--;
-      this.getdata();
-    }
-  }
 
-
-  // next button
-   nextPage(){
-   if(this.page<this.totalPages){
-    this.page++;
-    this.getdata();
-   }
-  }
 
   // delete book
   delete(id:any){

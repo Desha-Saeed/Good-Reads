@@ -1,28 +1,36 @@
 <div class="row my-5">
-
   <a routerLink="/admin/addauthor">Add Author</a>
-   
 
-   <div class="row mt-5 bg-light p-2">
-    <div class="col"> <p>Photo</p> </div> 
-    <div class="col"> <p>FirstName</p> </div>
-    <div class="col"> <p>LastName</p> </div>
-    <div class="col"> <p>Birth Date </p> </div>
-    <div class="col"> <p>Actions </p> </div>
-
-   </div>
-    <div class="row  w-100 my-2 bg-light" *ngFor="let elm of authors">
-        <div class="col"><img src="http://localhost:4000/{{elm.photo}}" alt="{{elm.photo}}" width="50"></div>
-        <div class="col"> <p>{{elm.f_name}}</p> </div>
-        <div class="col"> <p>{{elm.l_name}}</p> </div>
-        <div class="col"> <p>{{elm.birth_date | date:'shortDate' }}</p> </div>
-        <div class="col">
-
-            <!-- <button class="btn btn-primary" (click)="editauthor(elm)">edit</button> -->
-            <button class="btn btn-primary" (click)="moveto(elm._id)" >edit </button>
-            <button class="btn btn-warning mx-2 my-2" (click)="delete(elm._id)">delete</button>
-
-        </div>
+  <div class="row mt-5 bg-light p-2">
+    <div class="col"><p>Photo</p></div>
+    <div class="col"><p>FirstName</p></div>
+    <div class="col"><p>LastName</p></div>
+    <div class="col"><p>Birth Date</p></div>
+    <div class="col"><p>Actions</p></div>
+  </div>
+  <div class="row w-100 my-2 bg-light" *ngFor="let elm of authors">
+    <div class="col">
+      <img
+        src="http://localhost:4000/{{ elm.photo.split('assets')[1] }}"
+        alt="{{ elm.photo }}"
+        width="50"
+      />
     </div>
-
+    <div class="col">
+      <p>{{ elm.f_name }}</p>
+    </div>
+    <div class="col">
+      <p>{{ elm.l_name }}</p>
+    </div>
+    <div class="col">
+      <p>{{ elm.birth_date | date : "shortDate" }}</p>
+    </div>
+    <div class="col">
+      <!-- <button class="btn btn-primary" (click)="editauthor(elm)">edit</button> -->
+      <button class="btn btn-primary" (click)="moveto(elm._id)">edit</button>
+      <button class="btn btn-warning mx-2 my-2" (click)="delete(elm._id)">
+        delete
+      </button>
+    </div>
+  </div>
 </div>

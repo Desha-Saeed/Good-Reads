@@ -5,6 +5,7 @@ import { AddbookComponent } from './addbook/addbook.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { EditbookComponent } from './editbook/editbook.component';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 
 
@@ -18,7 +19,8 @@ import { EditbookComponent } from './editbook/editbook.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class BooksModule { }

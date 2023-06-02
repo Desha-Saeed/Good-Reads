@@ -30,11 +30,12 @@ let showBook = async (req, res, next) => {
     const features = new Features(bookModel.find({}), req.query)
       .paginate()
       .filter();
+
     const result = await features.query;
     res.status(200).json({
-     result:result,
-     page:features.page,
-     limit:features.limit
+      result: result,
+      page: features.page,
+      limit: features.limit,
     });
   } catch (error) {
     next(error);
@@ -44,15 +45,13 @@ let showBook = async (req, res, next) => {
 //search book
 let searchBook = async (req, res, next) => {
   try {
-    const {id}  = req.params;
+    const { id } = req.params;
     console.log(id);
-    const result = await bookModel
-      .findById(id);
+    const result = await bookModel.findById(id);
 
-      console.log(result);
+    console.log(result);
     res.status(200).json({
-    
-        result:result    
+      result: result,
     });
   } catch (error) {
     next(error);

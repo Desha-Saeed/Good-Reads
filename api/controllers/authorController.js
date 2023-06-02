@@ -5,16 +5,16 @@ const authorModel = require('../models/authoModel');
 let addAuthor = async (req, res, next) => {
   try {
     result = await authorModel.create({
-      f_name:req.body.f_name,
-      l_name:req.body.l_name,
-      birth_date:req.body.birth_date,
-      photo:`/img/authors/image-${req.file.fieldname}-${Date.now()}`
+      f_name: req.body.f_name,
+      l_name: req.body.l_name,
+      birth_date: req.body.birth_date,
+      photo: req.file.path,
     });
     res.status(200).json({
       status: 'success',
       data: {
         result,
-        photo:`/img/authors/image-${req.file.fieldname}-${Date.now()}`,
+        photo: req.file.path,
       },
     });
   } catch (error) {
@@ -30,9 +30,8 @@ let showAuthor = async (req, res, next) => {
     result = await feature.query;
     console.log(result);
     res.status(200).json({
-        result:result
-      },
-    );
+      result: result,
+    });
   } catch (error) {
     next(error);
   }
@@ -42,12 +41,10 @@ let showAuthor = async (req, res, next) => {
 let searchAuthor = async (req, res, next) => {
   try {
     const { id } = req.params;
-    result = await authorModel.findOne({_id:id});
+    result = await authorModel.findOne({ _id: id });
     console.log(result);
     res.status(200).json({
-    
-        result:result
-   
+      result: result,
     });
   } catch (error) {
     next(error);
@@ -76,12 +73,15 @@ let editAuthor = async (req, res, next) => {
   try {
     const data = req.body;
     console.log(data);
-    result = await authorModel.findByIdAndUpdate({ _id: data.id },{
-      f_name:data.f_name,
-      l_name:data.l_name,
-      birth_date:data.birth_date,
-      photo:data.birth_date
-    });
+    result = await authorModel.findByIdAndUpdate(
+      { _id: data.id },
+      {
+        f_name: data.f_name,
+        l_name: data.l_name,
+        birth_date: data.birth_date,
+        photo: data.birth_date,
+      }
+    );
     res.status(200).json({
       status: 'success',
       data: {

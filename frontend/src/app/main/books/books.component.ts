@@ -17,7 +17,7 @@ this.getbooks();
   }
 
   getbooks(){
-    this.bookserv.getbook(1,50).subscribe((res:any)=>{
+    this.bookserv.getbook().subscribe((res:any)=>{
       this.books=res.result;
       console.log(res.result);
       

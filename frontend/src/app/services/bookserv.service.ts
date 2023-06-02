@@ -8,8 +8,8 @@ export class BookservService {
 
   constructor( private http:HttpClient) { }
 
-  getbook(page:number,limit:number){
-     return this.http.get(`http://localhost:4000/book?page=${page}&limit=${limit} `);
+  getbook(){
+     return this.http.get(`http://localhost:4000/book `);
     // return this.http.get(`http://localhost:8000/book`);
   }
 

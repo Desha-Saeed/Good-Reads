@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent }from'./login/login.component';
 import { FirstsctioComponent } from './firstsctio/firstsctio.component';
 import{RegisterComponent}from'./register/register.component';
-import{ BodyComponent}from'./body/body.component';
-import { ReadComponent } from './read/read.component';
-import { CurrentlyReadingComponent } from './currently-reading/currently-reading.component';
-import { WantToReadComponent } from './want-to-read/want-to-read.component';
-import { SidnevComponent } from './sidnev/sidnev.component';
+import { BookComponent } from './books/book/book.component';
+
 import { BooksComponent } from './books/books.component';
+import { AddbookComponent } from './books/addbook/addbook.component';
+import { EditbookComponent } from './books/editbook/editbook.component';
+import { CatgoryComponent } from './category/catgory/catgory.component';
+import { AddCatgoryComponent } from './category/add-catgory/add-catgory.component';
+import { AuthorComponent } from './author/author/author.component';
+import { AddauthorComponent } from './author/addauthor/addauthor.component';
+import { EditauthorComponent } from './author/editauthor/editauthor.component';
 const routes: Routes = [
   {
     path:'books',
@@ -25,6 +29,54 @@ component:FirstsctioComponent },
     path:"register",
     component:RegisterComponent
   },
+  {
+    path:'books',
+    component:BooksComponent
+  },
+  // {
+  //   path:'book/:id',
+  //   component:SingelBookComponent
+  // },
+  {
+    path:'admin/book',
+    component:BookComponent
+  },
+  {
+    path:'admin/addbook',
+    component:AddbookComponent
+  },
+  {
+    path:'admin/editBook/:id',
+    component:EditbookComponent
+  },
+
+
+  {
+    path:'admin/category',
+    component:CatgoryComponent
+  },
+  {
+    path:'admin/addcategory',
+    component:AddCatgoryComponent
+  },
+
+
+  {
+    path:'admin/author',
+    component:AuthorComponent,
+  },
+  {
+    path:'admin/addauthor',
+    component:AddauthorComponent
+  },
+  {
+    path:'admin/editauthor/:id',
+    component:EditauthorComponent
+  },
+  {
+    path:'*',
+    component:FirstsctioComponent
+  }
   
 
 ];

@@ -20,7 +20,7 @@ export class HomeComponent {
   }
 
   getbooks(){
-    this.bookserv.getbook(1,20).subscribe((res:any)=>{
+    this.bookserv.getbook().subscribe((res:any)=>{
       this.mybook=res.result;
       console.log(this.mybook);
       
