@@ -12,7 +12,14 @@
       <th>Actions</th>
     </thead>
     <tbody>
-      <tr *ngFor="let elm of books" class="my-2">
+      <tr
+        *ngFor="
+          let elm of books
+            | paginate
+              : { itemsPerPage: itemsPerPage, currentPage: currentPage }
+        "
+        class="my-2"
+      >
         <td>
           <img
             src="http://localhost:4000/{{ elm.photo.split('assets')[1] }}"
