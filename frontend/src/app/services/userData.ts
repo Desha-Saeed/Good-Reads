@@ -1,5 +1,5 @@
 export class userData {
-    constructor(private firstName: string, private lastName: string, private email: string, private token: string){
+    constructor(private firstName: string, private lastName: string, private email: string, private token: string, private role: string){
 
     }
 }

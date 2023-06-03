@@ -13,6 +13,7 @@ import { AddCatgoryComponent } from './category/add-catgory/add-catgory.componen
 import { AuthorComponent } from './author/author/author.component';
 import { AddauthorComponent } from './author/addauthor/addauthor.component';
 import { EditauthorComponent } from './author/editauthor/editauthor.component';
+import { UserHomeComponent } from './user-home/user-home.component';
 const routes: Routes = [
   {
     path:'books',
@@ -37,6 +38,7 @@ component:FirstsctioComponent },
   //   path:'book/:id',
   //   component:SingelBookComponent
   // },
+  
   {
     path:'admin/book',
     component:BookComponent
@@ -72,6 +74,10 @@ component:FirstsctioComponent },
   {
     path:'admin/editauthor/:id',
     component:EditauthorComponent
+  },
+  {
+    path: "user/home",
+    component: UserHomeComponent
   },
   {
     path:'*',

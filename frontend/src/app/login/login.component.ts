@@ -25,9 +25,10 @@ export class LoginComponent {
     console.log(data);
        
     if(data.status == 'success') {
-
-      this._AuthService.saveUserData(data.user.firstName, data.user.lastName, data.user.email, data.token)
-      this._Router.navigate([''])
+      console.log(data);
+      
+      this._AuthService.saveUserData(data.user.firstName, data.user.lastName, data.user.email, data.token, data.user.role)
+      this._Router.navigate(['user/home'])
     }else {
      
       

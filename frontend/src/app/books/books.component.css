@@ -1,0 +1,59 @@
+* { box-sizing: border-box; }
+.container-fluid { 
+    display: flex; 
+    flex-flow: row wrap;
+    align-items: stretch;
+    margin-top: 10px;
+   
+    
+    
+  }
+
+
+
+ .card-wrap {
+    flex: 0 0 33.333%;
+    display: flex;
+    padding: 10px;
+}
+.card {
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    flex: 0 0 100%;
+  }
+ 
+  p{
+    font-size: small;
+    margin-bottom: -4px;
+  }
+    a{
+        width: 140px;
+        /* color: green; */
+        background-color: rgb(78, 160, 78);
+        font-size: small;
+        border-style: none;
+        margin-top: 10px;
+    }
+    a:hover{
+        background-color: rgb(189, 109, 35);
+    }
+    .zoom {
+        
+        transition: transform .2s;
+        width: 350px;
+        height: 460px;
+        /* margin: 0 auto; */
+     margin-left: 50px;
+        
+      }
+      
+      .zoom:hover {
+        -ms-transform: scale(1); 
+        -webkit-transform: scale(1.2); 
+        transform: scale(1.2); 
+      }
+      /* .car-cont{
+       margin-top: 20px;
+      } */
+      .carying{
+        margin-top: 20px;
+      }

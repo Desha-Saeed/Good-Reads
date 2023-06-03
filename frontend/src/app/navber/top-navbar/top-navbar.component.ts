@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-top-navbar',
@@ -7,18 +8,32 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class TopNavbarComponent {
   
-  isLogin: boolean = false;
-  
-  constructor(private _AuthService: AuthService) {
-      if(this._AuthService.currentUser !==null) {
+  isLoggedin: boolean = false;
 
-        console.log(this._AuthService.currentUser);
-        
-        this.isLogin = true
-      } else {
-        this.isLogin = false
-      }
+  constructor(private _AuthService: AuthService , private _Router : Router) {
+
+  
   }
 
-  ngOnInit() {}
+  ngOnInit () {
+    this._AuthService.currentUser._value
+    if( this._AuthService.currentUser._value != null ) {
+
+      console.log('heeeeeeeelooooooo');
+      
+     this.isLoggedin = true
+    }else if(this._AuthService.currentUser.role == 'admin') {
+
+      console.log("Hello admin");
+      
+      this.isLoggedin = false;
+      
+    }
+  }
+
+
+  logout() {
+    this._AuthService.logout();
+    this._Router.navigate([''])
+  }
 }

@@ -1,19 +1,26 @@
+<div class="container-fluid" >
 <div class="row">
-    <div class="col-md-4 my-3"  *ngFor="let book of book">
-        <div class="cards">
-            <div class="card">
-    <img [src]="book.thumbnail" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{book.title}}</h5>
-      <p class="card-text">{{book.description}}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
+
+  <div class="col-md-3 my-2" *ngFor="let book of books" class="zoom" style="margin-bottom: 110px;">
+      <div class="carying">
+    <div class="card h-100 " >
+        <img
+          src="http://localhost:4000/{{ book.photo.split('assets')[1] }}"
+          class="card-img-top"
+          alt="..." height="300px" width="350px" style="padding: 5px;border-radius: 9px; "
+        />
+        <div class="card-body" >
+          <h5 class="card-title">{{ book.name }}</h5>
+          <p class="card-text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+            quisquam vel voluptatum id veniam.
+          </p>
+          <a href="#" class="btn btn-primary">Show details</a>
+          </div>
+            </div>
         </div>
+      </div>
     </div>
-
-</div>
-
-
-
+   
+  
 
