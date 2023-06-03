@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthorComponent } from './author/author.component';
-import { AddauthorComponent } from './addauthor/addauthor.component';
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditauthorComponent } from './editauthor/editauthor.component';
+
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from '../app-routing.module';
+
 import { HttpClientModule } from '@angular/common/http';
+import { EditauthorComponent } from './editauthor/editauthor.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { AddauthorComponent } from './addauthor/addauthor.component';
+import { AuthorComponent } from './author/author.component';
 
 
 
@@ -22,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
+   
   ],
   exports:[
     AuthorComponent,
@@ -31,3 +36,5 @@ import { HttpClientModule } from '@angular/common/http';
   ]
 })
 export class AuthorModule { }
+export { AuthorComponent };
+

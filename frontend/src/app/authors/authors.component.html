@@ -1,0 +1,25 @@
+
+<div class="container-fluid" >
+    <div class="row">
+    
+      <div class="col-md-3 my-2" *ngFor="let author of authors" class="zoom" style="margin-bottom: 110px;">
+          <div class="carying">
+        <div class="card h-100 " >
+            <img
+              src="http://localhost:4000/{{ author.photo.split('assets')[1] }}"
+              class="card-img-top"
+              alt="..." height="300px" width="350px" style="padding: 5px;border-radius: 9px" />
+            
+            <div class="card-body" >
+              <h5 class="card-title">{{author.f_name}} {{author.l_name}}</h5>
+              <p class="card-text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum
+                quisquam vel voluptatum id veniam.
+              </p>
+              <a href="#" class="btn btn-primary">Show details</a>
+              </div>
+                </div>
+            </div>
+          </div>
+        </div>
+       

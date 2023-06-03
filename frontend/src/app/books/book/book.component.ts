@@ -13,7 +13,7 @@ export class BookComponent {
 
   books!: any[] ;
   currentPage = 1; // start with the first page
-  itemsPerPage = 2; // show 5 items per page
+  itemsPerPage = 5; // show 5 items per page
   constructor(private bookser:BookservService ,private router:Router){}
 
   ngOnInit(){

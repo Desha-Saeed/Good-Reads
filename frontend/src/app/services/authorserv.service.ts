@@ -1,26 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorservService {
+  getbook() :Observable <any>{
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http:HttpClient) { }
 
   
 
-  getauthor(){
+  getauthor():Observable <any>{
 
     return this.http.get('http://localhost:4000/author');
   }
 
-  addauthor(data:any){
+  addauthor(data:any):Observable <any>{
    return this.http.post('http://localhost:4000/author',data);
   }
 
-  editauthor(data:any){
+  editauthor(data:any):Observable <any>{
 
     return this.http.put('http://localhost:4000/author',{
       id:data.get('id'),
@@ -31,7 +34,7 @@ export class AuthorservService {
     })
   }
 
-  findauthor(id:any){
+  findauthor(id:any):Observable <any>{
         return this.http.get('http://localhost:4000/author/'+id)
   }
 

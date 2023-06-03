@@ -28,10 +28,12 @@ import { BooksModule } from './books/books.module';
 
 
 import { CategoryModule } from './category/category.module';
-import { AuthorModule } from './author/author.module';
+import { AuthorModule } from './authors/author.module';
 // import { MainModule } from './main/main.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthorsComponent } from './authors/authors.component';
+
 
 
 
@@ -56,6 +58,8 @@ import { FooterComponent } from './footer/footer.component';
     UserHomeComponent,
     CategoriesComponent,
     FooterComponent,
+    AuthorsComponent,
+ 
   
   ],
   

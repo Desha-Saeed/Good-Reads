@@ -9,14 +9,14 @@ import { AuthorservService } from 'src/app/services/authorserv.service';
 })
 export class AuthorComponent {
 
-  authors:any;
+  author:any;
 
 
   constructor( private authorserv:AuthorservService , private router:Router){}
 
   ngOnInit(){
     this.authorserv.getauthor().subscribe((res:any)=>{
-        this.authors=res.result;
+        this.author=res.result;
     })
   }
 
