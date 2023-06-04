@@ -55,6 +55,12 @@ export class AddbookComponent {
 
     // add photo
     addphoto(event:any){
+
+      console.log(event.target.files[0]);
+
+      console.log(this.addbookform);
+      
+      
       if(event.target.files.length>0){
         this.imagefile=event.target.files[0];
   

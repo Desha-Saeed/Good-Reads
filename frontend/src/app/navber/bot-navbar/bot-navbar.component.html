@@ -21,18 +21,18 @@
         <a class="nav-link" routerLink="books">Books</a>
         <a class="nav-link" href="#">Authers</a>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isLoggedin" routerLink="/admin/book"
+          <a class="nav-link" *ngIf="!isLoggedin" routerLink="/admin/book"
             >adminBook</a
           >
         </li>
 
         <li class="nav-item mx-2">
-          <a class="nav-link" *ngIf="isLoggedin" routerLink="/admin/author"
+          <a class="nav-link" *ngIf="!isLoggedin" routerLink="/admin/author"
             >adminAuthor
           </a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link" *ngIf="isLoggedin" routerLink="/admin/category"
+          <a class="nav-link" *ngIf="!isLoggedin" routerLink="/admin/category"
             >adminCategory
           </a>
         </li>
