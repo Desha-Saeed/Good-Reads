@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-top-navbar',
@@ -7,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./top-navbar.component.css']
 })
 export class TopNavbarComponent {
+  
+
   
   isLoggedin: boolean = false;
 

@@ -1,24 +1,31 @@
-
-
-<div class="container-fluid " style="background-color: #f28842" >
+<div class="container-fluid" style="background-color:rgb(241, 142, 11) ;box-shadow: 0 0 5px;">
   <div class="row" >
-    <div class="col-md-6">
-      <input
+
+    <div class="col-md-6" id="social" >
+     <ul>
+     <li class="p" id="followus"> <span style="color:white;font-size: large;">Follow us</span></li>
+       <li class="p" ><a class="nav-link"><i class="fa-brands fa-square-twitter fa-xl" style="color: #4074ce;"></i> </a></li>
+     <li class="p" > <a class="nav-link"><i class="fa-brands  fa-square-facebook fa-xl" style="color: #4167aa;"></i> </a></li>
+      <li class="p"><a class="nav-link"><i class="fa-brands fa-square-pinterest fa-xl" style="color: #c53e11;"></i> </a></li>
+      </ul>
+    </div>
+    <div class="col-6" >
+      
+      <ul class="nav justify-content-end">
+        <input
         type="text"
         id="inputPassword6"
-        class="form-control p-3 text-center"
-      />
-    </div>
-    <div class="col-md-6" >
-      <ul class="nav justify-content-end">
+        class="form-control p-2 " placeholder="Search"  style="box-shadow:0 0  2px 2px rgb(235, 130, 60);"/> 
+      
         <li class="nav-item" *ngIf="isLoggedin">
           <a class="nav-link"> My Account</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedin">
-          <a class="nav-link" routerLink="login"> Log in</a>
+          <a class="nav-link" routerLink="login"><i class="fa-solid fa-user fa-beat"></i>   
+                  Log in</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedin">
-          <a class="nav-link" routerLink="register">Sign up</a>
+          <a class="nav-link" routerLink="register">Sign up <i class="fa-solid fa-right-to-bracket fa-beat"></i></a>
         </li>
 
         <li class="nav-item" *ngIf="isLoggedin">

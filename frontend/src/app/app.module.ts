@@ -9,7 +9,7 @@ import { FirstsctioComponent } from './firstsctio/firstsctio.component';
 import { SSectionComponent } from './s-section/s-section.component';
 
 import { NgOptimizedImage } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -33,6 +33,8 @@ import { AuthorModule } from './authors/author.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -74,7 +76,7 @@ import { AuthorsComponent } from './authors/authors.component';
 
    
     FormsModule,
-    FontAwesomeModule,
+
     
     ReactiveFormsModule,
     HttpClientModule,
@@ -84,7 +86,7 @@ import { AuthorsComponent } from './authors/authors.component';
    
     NgOptimizedImage,
     AppRoutingModule,
-    FontAwesomeModule,
+ 
     ReactiveFormsModule,
     HttpClientModule
     ,
@@ -99,6 +101,7 @@ import { AuthorsComponent } from './authors/authors.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { 
+ 
     constructor(library: FaIconLibrary) {
      
     }

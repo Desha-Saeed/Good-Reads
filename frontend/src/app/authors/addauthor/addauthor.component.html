@@ -1,6 +1,7 @@
-<div class="row my-5">
+<div  class="container">
+<div class="row my-5" id="de">
     <h4 class=" text-center">Add Author</h4>
-    <form action="" enctype="multipart/form-data" method="post" [formGroup]="addauthorform" (ngSubmit)="addauthor()">
+    <form action="" enctype="multipart/form-data" method="post" [formGroup]="addauthorform" (ngSubmit)="addauthor()" >
         <div class="elm my-3" >
 
             <label > Add First Name</label>
@@ -52,10 +53,10 @@
             </span>
 
         </div>
-        <div class="elm my-3" >
+        <div class="elm my-3" style="padding: 20px;" >
 
             <label > Add Photo</label>
-            <input type="file" formControlName="photo" class="form-control" (change)="addphoto($event)">
+            <input type="file" formControlName="photo" class="form-control" (change)="addphoto($event)" >
 
 
             <span *ngIf="addauthorform.controls['photo'].touched && addauthorform.controls['f_name'].invalid">
@@ -75,4 +76,5 @@
 
         </div>
     </form>
+</div>
 </div>
