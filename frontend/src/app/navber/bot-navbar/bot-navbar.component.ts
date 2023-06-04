@@ -17,16 +17,16 @@ export class BotNavbarComponent {
 
   ngOnInit () {
     this._AuthService.currentUser._value
-    if( this._AuthService.currentUser._value != null ) {
+    if( this._AuthService.currentUser._value != null || this._AuthService.currentUser.role == 'user' ) {
 
       console.log('heeeeeeeelooooooo');
       
-     this.isLoggedin = true
+     this.isLoggedin = false
     }else if(this._AuthService.currentUser.role == 'admin') {
 
       console.log("Hello admin");
       
-      this.isLoggedin = false;
+      this.isLoggedin = true;
       
     }
   }
