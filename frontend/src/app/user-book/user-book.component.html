@@ -1,0 +1,57 @@
+<div class="container-fluid" style="background-color: #ffffff">
+    <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: white">
+        <h2 matSubheader class="mt-4" style="text-align: center;">
+            <b>My Books</b>
+          </h2>
+          <div class="content">
+            <a  class="contentType" routerLinkActive="contentType" (click)="getAll('all')"> All</a>
+            <a class="contentType" (click)="getAll('read')">Read </a>
+            <a class="contentType" (click)="getAll('currentReading')">Currently Reading </a>
+            <a  class="contentType" (click)="getAll('wantToRead')">Want to Read</a>
+          </div>
+      </div>
+      <div class="container-fluid" style="width: 82vw">
+        <div class="pageBox mt-4 ">
+            <table>
+                <thead class="mb-3">
+                    <th>Cover</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Avg Rate</th>
+                    <th>Rating</th>
+                    <th>Shelve</th>
+                </thead>
+                <div class="py-2"></div>
+                <tbody>
+                    <tr *ngFor="let item of items | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                        <td><img [src]="item.img" style="width: 100px;" alt="Cover"></td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.author}}</td>
+                        <td>{{item.avg}}</td>
+                        <td >{{item.rate}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                            All
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="triggerId">
+                                    <a class="dropdown-item" href="#">Read</a>
+                                    <a class="dropdown-item" href="#">Want to read</a>
+                                    <a class="dropdown-item" href="#">Currently reead</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+             </table>
+             <div class="text-center paginationNav mt-2">
+                <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>

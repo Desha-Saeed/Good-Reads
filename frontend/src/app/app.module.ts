@@ -33,6 +33,7 @@ import { AuthorModule } from './authors/author.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { UserBookComponent } from './user-book/user-book.component';
 
 
 
@@ -59,6 +60,7 @@ import { AuthorsComponent } from './authors/authors.component';
     CategoriesComponent,
     FooterComponent,
     AuthorsComponent,
+    UserBookComponent,
  
   
   ],

@@ -1,0 +1,52 @@
+.contentType {
+    display: block;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #7878ff;
+    margin: 5px 5px;
+    padding: 10px;
+    transition: background-color 0.5s ;
+  }
+  .contentType:hover {
+    cursor: pointer;
+    background-color:#fd7e14;
+    color: white;
+  }
+
+
+  .pageBox {
+    background-color: #fff;
+    box-shadow: 1px 1px 4px #7878ff;
+    margin: 2rem 1rem;
+    padding: 5px;
+    border-radius: 15px;
+    height: 450px;
+    position: relative;
+  }
+  .pageBox table
+  {
+    width: 100%;
+  }
+
+  .pageBox table thead
+  {
+    border-bottom: 1px solid #ffe2ca;
+  }
+
+.dropdown button
+{
+    background-color: #fff;
+    border: 1px solid #ff5900;
+}
+
+
+  .paginationNav
+  {
+    min-width: 100%;
+    position: absolute;
+    bottom: 0px;
+  }
+  .ngx-pagination .current
+  {
+    color :#ffa45a !important
+  }
