@@ -24,14 +24,15 @@
             href="../../assets/image/My project.png"
             width="800px"
             x="-60"
-            y="-40"
+            y="-40" filter="drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
           ></image>
         </svg>
       </div>
-      <div class="col-md-6" id="container">
+      <div class="col-md-6" id="container" style="box-shadow: 0 0 10px;">
         <div class="kkk">
           <div class="row">
             <div class="mb-3" class="col-12">
+              <p claa="welcome">welcome back</p>
               <label
                 for="exampleFormControlInput1"
                 [class.is-valid]="
@@ -70,7 +71,7 @@
                 "
                 formControlName="password"
                 placeholder="Password"
-              />
+                />
               <p
                 *ngIf="
                   loginForm.get('password')?.errors != null &&
@@ -87,14 +88,16 @@
               <button
                 type="submit"
                 [disabled]="loginForm.invalid"
-                class="btn btn-success"
+                class="btn btn-success" 
               >
                 Sign in
               </button>
+              
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  
 </form>

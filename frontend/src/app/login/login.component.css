@@ -11,7 +11,7 @@ justify-content: center;
 }
 .kkk{
     width: 300px;
-    margin-top: 90px;
+    margin-top: 50px;
     
    
 }
@@ -20,4 +20,10 @@ button{
     margin-top: 15px;
     width: 300px;
     margin-left: 3px;
+    box-shadow: 0 0 5px 10px;
+}
+.welcome{
+    font-size: 50px;
+    text-align: center;
+    font-family:'Italianno' ;
 }

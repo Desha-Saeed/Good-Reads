@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-
 import { BookservService } from '../services/bookserv.service';
+
+
 
 @Component({
   selector: 'app-books',
@@ -8,21 +9,22 @@ import { BookservService } from '../services/bookserv.service';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
-    books! :Array<any>
+  books! :Array<any>
 
 
-    constructor(private _BookService: BookservService) {}
+  constructor(private _BookService: BookservService) {}
+  
+  
+  ngOnInit() {
+    this._BookService.getbook().subscribe((data) => {
+       
+  
+      this.books = data.result
+  
+      console.log(this.books);
+      
+      
+    })
+  }
 
-
-    ngOnInit() {
-      this._BookService.getbook().subscribe((data) => {
-         
-
-        this.books = data.result
-
-        console.log(this.books);
-        
-        
-      })
-    }
 }

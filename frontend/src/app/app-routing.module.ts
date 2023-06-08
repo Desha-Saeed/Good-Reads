@@ -16,12 +16,15 @@ import { EditauthorComponent } from './authors/editauthor/editauthor.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { AuthorComponent } from './authors/author/author.component';
 
+import { DetailsComponent } from './details/details.component';
+import { BooksCardComponent } from './books-card/books-card.component';
+
 // import{AuthorsComponent}from './authors/authors.component';
 const routes: Routes = [
-  {
-    path:'books',
-    component:BooksComponent   
-  },
+  // {
+  //   path:'books',
+  //   component:BooksComponent   
+  // },
   
   {path:"",
 component:FirstsctioComponent },
@@ -89,7 +92,12 @@ component:FirstsctioComponent },
   {
     path:'authors',
     component:AuthorsComponent
+  },
+  {
+    path:'detaies/:id',
+    component: DetailsComponent
   }
+
   
 
 ];
